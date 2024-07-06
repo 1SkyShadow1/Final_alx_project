@@ -1,6 +1,5 @@
 const mysql = require('mysql2');
 const dotenv = require('dotenv');
-
 dotenv.config();
 
 const db = mysql.createConnection({
@@ -48,7 +47,7 @@ db.connect((err) =>{
         } 
       }    
     );
-
+    
     db.query(
        `CREATE TABLE IF NOT EXISTS gigs(
        id INT AUTO_INCREMENT PRIMARY KEY,
@@ -104,7 +103,7 @@ db.connect((err) =>{
       }    
     );
 
-    db.connect(
+    db.query(
       `CREATE TABLE IF NOT EXISTS messages (
        id INT AUTO_INCREMENT PRIMARY KEY,
        sender_id INT NOT NULL,
@@ -153,7 +152,7 @@ db.connect((err) =>{
       created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
       FOREIGN KEY (gig_id) REFERENCES gigs(id),
       FOREIGN KEY (reviewer_id) REFERENCES users(id),
-      FOREIGN KEY (reviewee_id) REFERENCES users(id)  
+      FOREIGN KEY (reviewee_id) REFERENCES users(id),  
       is_flagged BOOLEAN DEFAULT FALSE
       );`,
       (err, result) =>{
