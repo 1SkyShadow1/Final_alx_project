@@ -3,15 +3,15 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Button } from "@/app/ui/button";
-import { Input } from "@/components/ui/input";
+import { Input } from "@/app/ui/input";
 import {
   Card,
   CardHeader,
   CardContent,
   CardFooter,
-} from "@/components/ui/card";
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
-import { Header } from "@/components/header";
+} from "@/app/ui/card";
+import { Avatar, AvatarImage, AvatarFallback } from "@/app/ui/avatar";
+import { Header } from "@/app/header";
 import {
   DollarSignIcon,
   LocateIcon,
@@ -19,7 +19,7 @@ import {
   MountainIcon,
   StarIcon,
   SunIcon,
-} from "@/components/icons";
+} from "@/app/icons";
 
 interface Gig {
   title: string;
@@ -137,13 +137,13 @@ export default function Component() {
                 key={professional.name}
                 className="shadow-md shadow-primary/20 dark:shadow-primary/40 transform transition-transform hover:scale-105 hover:rotate-3 hover:shadow-lg hover:shadow-primary/30 dark:hover:shadow-primary/50"
               >
-                <CardHeader>
+                <CardHeader className="my-class-name">
                   <Avatar className="w-12 h-12">
-                    <AvatarImage src="/placeholder-user.jpg" />
-                    <AvatarFallback>{professional.name}</AvatarFallback>
+                    <AvatarImage src="/placeholder-user.jpg" className="w-12 h-12" />
+                    <AvatarFallback className={undefined}>{professional.name}</AvatarFallback>
                   </Avatar>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="my-class-name">
                   <h3 className="text-xl font-bold">{professional.name}</h3>
                   <p className="text-muted-foreground">
                     {professional.profession}
@@ -158,7 +158,7 @@ export default function Component() {
                     </span>
                   </div>
                 </CardContent>
-                <CardFooter>
+                <CardFooter className="my-class-name">
                   <Button
                     variant="outline"
                     className="shadow-md shadow-primary/20 dark:shadow-primary/40 animate-bounce-slow hover:scale-110 hover:rotate-12 transition-transform duration-500 ease-in-out"
@@ -180,10 +180,10 @@ export default function Component() {
                 key={gig.title}
                 className="shadow-md shadow-primary/20 dark:shadow-primary/40 transform transition-transform hover:scale-105 hover:rotate-3 hover:shadow-lg hover:shadow-primary/30 dark:hover:shadow-primary/50"
               >
-                <CardHeader>
+                <CardHeader className="my-class-name">
                   <h3 className="text-xl font-bold">{gig.title}</h3>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="my-class-name">
                   <p className="text-muted-foreground">{gig.description}</p>
                   <div className="flex items-center gap-2 mt-2">
                     <LocateIcon className="w-4 h-4 text-muted-foreground" />
@@ -198,7 +198,7 @@ export default function Component() {
                     </span>
                   </div>
                 </CardContent>
-                <CardFooter>
+                <CardFooter className="my-class-name">
                   <Button
                     variant="outline"
                     className="shadow-md shadow-primary/20 dark:shadow-primary/40 animate-bounce-slow hover:scale-110 hover:rotate-12 transition-transform duration-500 ease-in-out"
