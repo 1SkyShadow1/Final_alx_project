@@ -18,7 +18,7 @@ interface GigProps {
 
 const GigCard = ({ gig }: GigProps) => {
   return (
-    <Card>
+    <Card className={undefined}>
       <CardContent className="grid grid-cols-[1fr_auto] gap-4">
         <div>
           <h3 className="text-lg font-bold">{gig.title}</h3>
@@ -33,8 +33,8 @@ const GigCard = ({ gig }: GigProps) => {
           </div>
         </div>
         <div className="flex flex-col items-end gap-2">
-          <Badge variant="outline">{gig.category}</Badge>
-          <Button variant="outline">Apply</Button>
+          <Badge variant="outline" className={undefined}>{gig.category}</Badge>
+          <Button variant="outline" className={undefined}>Apply</Button>
         </div>
       </CardContent>
     </Card>
