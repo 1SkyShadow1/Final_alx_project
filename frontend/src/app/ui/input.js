@@ -14,4 +14,16 @@ const Input = ({ className, ...props }) => {
   );
 };
 
-export { Input };
+const Label = ({ htmlFor, children, className, ...props }) => {
+  return (
+    <label
+      htmlFor={htmlFor}
+      className={cn("block text-sm font-medium text-muted-foreground", className)}
+      {...props}
+    >
+      {children}
+    </label>
+  );
+};
+
+export { Input, Label };
