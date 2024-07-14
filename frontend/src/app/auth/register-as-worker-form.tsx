@@ -8,8 +8,11 @@ import { Button } from "@/app/ui/button";
 import { ChevronDownIcon } from "@/app/icons/chevron-down";
 import axios from "axios";
 
+interface RegisterAsWorkerFormProps {
+  onRegisterSuccess: () => void;
+}
 
-const RegisterAsWorkerForm = ({ onRegisterSuccess }) => {
+const RegisterAsWorkerForm = ({ onRegisterSuccess }: RegisterAsWorkerFormProps) => {
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
