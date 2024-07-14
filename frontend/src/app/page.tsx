@@ -19,7 +19,7 @@ import {
   MountainIcon,
   StarIcon,
   SunIcon,
-} from "@/app/icons";
+} from "@app/icons";
 
 interface Gig {
   title: string;
