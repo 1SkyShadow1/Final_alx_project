@@ -14,22 +14,23 @@ import {
  SelectContent,
  SelectItem
 } from '@/app/ui/select';
-import {Badge} from '@/app/ui/badge';
+import Badge from '@/app/ui/badge';
 import {
   DollarSignIcon,
   HammerIcon,
   MapPinIcon,
   MenuIcon,
   plugIcon    
-} from '@/app/icons';
+} from '@/app/icons/';
 
-import {useState, useEffect} from 'react';
+import {useState, useEffect, SetStateAction, SetStateAction} from 'react';
 import axios from 'axios';
 import { title } from 'process';
 import { PlugIcon } from './icons/plug';
 import { GigCard } from './gig/gig-card';
 
 interface Gig{
+  title: string;
   _id: string;
   description: string;
   location: string;
@@ -52,7 +53,7 @@ const GigsPage = ()=>{
    category: 'All Categories'
   });
   const [filterCategory, setFilterCategory] = useState('All Categories');
-  const [firfilterSortBy, setFilterSortSortBy] = useState('Relevance');
+  const [filterSortBy, setFilterSortSortBy] = useState('Relevance');
 
   const fetchGigs = async () =>{
     try {
@@ -63,16 +64,16 @@ const GigsPage = ()=>{
     }
   };
 
-  const handleGigChange = (event) =>{
+  const handleGigChange = (event: { target: { name: any; value: any; }; }) =>{
     const {name, value} = event.target;
     setNewGig((prevGig)=>({...prevGig, [name]: value})); 
   };
 
-  const handleFileChange = (event) =>{
+  const handleFileChange = (event: { target: { files: any[]; }; }) =>{
     setNewGig((prevGig)=>({...prevGig, documents: event.target.files[0]}));
   }
 
-  const handleSubmit = async (event) =>{
+  const handleSubmit = async (event: { preventDefault: () => void; }) =>{
     event.preventDefault();
     try{
         const formData = new FormData();
@@ -81,7 +82,7 @@ const GigsPage = ()=>{
         formData.append('location', newGig.location);
         formData.append('skills', newGig.skills);
         formData.append('pay', newGig.pay);
-        formData.append('documents', newGig.documents);
+        formData.append('documents', newGig.documents || '');
         formData.append('category', newGig.category);
     
         const response = await axios.post('/api/gigs', formData);
@@ -101,11 +102,11 @@ const GigsPage = ()=>{
     }
   };
   
-  const handleCategoryChange = (event) =>{
+  const handleCategoryChange = (event: { target: { value: SetStateAction<string>; }; }) =>{
     setFilterCategory(event.target.value);
   }
 
-  const handleSortByChange = (event) =>{
+  const handleSortByChange = (event: { target: { value: SetStateAction<string>; }; }) =>{
     setFilterSortSortBy(event.target.value);
   }
 
@@ -323,9 +324,11 @@ const GigsPage = ()=>{
                     onChange={handleSortByChange}
                    > 
                    <SelectTrigger>
-                     <SelectValue placeholder='Relevance'/>
+                    <SelectValue placeholder='Relevance'>
+                        Relevance
+                    </SelectValue>
                    </SelectTrigger>
-                     <SelectContent>
+                    <SelectContent className=''>
                         <SelectItem value='relevance'>
                              Relevance
                         </SelectItem>
@@ -350,7 +353,7 @@ const GigsPage = ()=>{
                sort((a, b)=>{
                     if(filterSortBy === 'newest'){
                     return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
-                    else if(filterSortBy === 'highest Pay'){
+                    } else if(filterSortBy === 'highest Pay'){
                     return b.pay - a.pay;
                     } else if(filterSortBy === 'lowest Pay'){
                     return a.pay - b.pay;

@@ -13,7 +13,14 @@ interface RegisterAsWorkerFormProps {
 }
 
 const RegisterAsWorkerForm = ({ onRegisterSuccess }: RegisterAsWorkerFormProps) => {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<{
+    firstName: string;
+    lastName: string;
+    email: string;
+    password: string;
+    confirmPassword: string;
+    services: any[];
+  }>({
     firstName: "",
     lastName: "",
     email: "",
@@ -23,14 +30,14 @@ const RegisterAsWorkerForm = ({ onRegisterSuccess }: RegisterAsWorkerFormProps) 
   });
 
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<any>(null);
 
   const handleChange = (event: { target: { name: any; value: any; }; }) => {
     const { name, value } = event.target;
     setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
-  };
+  }
 
-  const handleServiceChange = (event) => {
+  const handleServiceChange = (event: { target: { value: any; checked: any; }; }) => {
     const { value, checked } = event.target;
     if (checked) {
       setFormData((prevFormData) => ({
@@ -43,20 +50,21 @@ const RegisterAsWorkerForm = ({ onRegisterSuccess }: RegisterAsWorkerFormProps) 
         services: prevFormData.services.filter((service) => service !== value),
       }));
     }
+    }
   };
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async (event: { preventDefault: () => void; }) => {
     event.preventDefault();
     setIsLoading(true);
     setError(null);
 
     try {
-      const response = await axios.post("/api/auth/register-worker", formData);
+      const response = await axios.post("/api/auth/register-worker", FormData);
       // Handle successful registration
       console.log("Worker registration successful:", response.data);
       onRegisterSuccess(); // Call the callback function
     } catch (error) {
-      setError(error.response.data.message || "Failed to register");
+      setError((error as any).response.data.message || "Failed to register");
     } finally {
       setIsLoading(false);
     }
@@ -72,7 +80,7 @@ const RegisterAsWorkerForm = ({ onRegisterSuccess }: RegisterAsWorkerFormProps) 
               id="firstName"
               name="firstName"
               placeholder="Enter your first name"
-              value={formData.firstName}
+              value={FormData.firstName}
               onChange={handleChange}
             />
           </div>
@@ -207,7 +215,7 @@ const RegisterAsWorkerForm = ({ onRegisterSuccess }: RegisterAsWorkerFormProps) 
                 </DropdownMenuCheckboxItem>
                 <DropdownMenuCheckboxItem
                   value="personal_trainer"
-                  checked={formData.services.includes("personal_trainer")}
+                  checked={FormData.services.includes("personal_trainer")}
                   onChange={handleServiceChange}
                 >
                   Personal Trainer
@@ -236,4 +244,17 @@ const RegisterAsWorkerForm = ({ onRegisterSuccess }: RegisterAsWorkerFormProps) 
   );
 };
 
-export { RegisterAsWorkerForm };
+export { RegisterAsWorkerForm, setIsLoading };
+
+function setIsLoading(arg0: boolean) {
+  const [isLoading, setIsLoading] = useState<boolean>(arg0);
+  return [isLoading, setIsLoading];
+}
+function setError(arg0: null) {
+  throw new Error("Function not implemented.");
+}
+
+function onRegisterSuccess() {
+  throw new Error("Function not implemented.");
+}
+

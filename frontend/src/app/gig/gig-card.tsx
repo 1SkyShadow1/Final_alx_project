@@ -2,7 +2,7 @@
 
 import { Card, CardContent } from "@/app/ui/card";
 import { Button } from "@/app/ui/button";
-import { Badge } from "@/app/ui/badge";
+import Badge from "@/app/ui/badge";
 import { DollarSignIcon } from "@/app/icons/dollar-sign";
 import { MapPinIcon } from "@/app/icons/map-pin";
 

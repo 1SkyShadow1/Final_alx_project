@@ -1,6 +1,6 @@
 'use client'
 import {Avatar, AvatarImage, AvatarFallback} from  '@/app/ui/avatar';
-import {Badge} from '@/app/ui/badge';
+import Badge from '@/app/ui/badge';
 import {Separator} from '@/app/ui/separator';
 import {StarIcon} from '@/app/icons/star';
 import axios from 'axios';
