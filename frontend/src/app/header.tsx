@@ -73,7 +73,7 @@ const Header = () => {
         className={cn("md:hidden", !isMenuOpen && "hidden")}
         onClick={toggleMenu}
       >
-        <XIcon className="w-5 h-5" />
+        <XIcon />
       </Button>
     </header>
   );

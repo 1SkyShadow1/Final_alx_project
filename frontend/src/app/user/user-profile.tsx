@@ -8,8 +8,6 @@ import {useEffect, useState} from 'react';
 import Link from 'next/link';
 import { HammerIcon } from '../icons/hammer';
 import { PlugIcon } from '@/app/icons/plug';
-import {MailsIcon} from '@/app/icons/mails';
-import {MessagesSquareIcon} from '@/app/icons/messages-square';
 
 interface User {
   firstName: string;
