@@ -1,6 +1,6 @@
 'use client';
 
-import {LoginFrom} from '@/app/auth/login-form';
+import {LoginForm} from '@/app/auth/login-form';
 import {Header} from '@/app/header';
 
 const LoginPage = () =>{
@@ -11,7 +11,7 @@ const LoginPage = () =>{
           className='flex-1 flex items-center py-12 md:py-24 lg:py-32'
         >
             <div className='container px-4 md:px-6'>
-              <LoginFrom/>
+              <LoginForm/>
             </div>
         </main>
       </div>    
