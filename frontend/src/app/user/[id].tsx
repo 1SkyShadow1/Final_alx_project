@@ -1,6 +1,7 @@
 "use client";
 
-import { UserProfile } from "@/app/user/user-profile";
+import UserProfile from "@/app/user/user-profile";
+import User from "@/app/user/user-profile";
 import axios from "axios";
 import { useState, useEffect } from "react";
 
@@ -46,7 +47,7 @@ const UserProfilePage = async ({ params }: { params: { id: string } }) => {
   }
 
   return (
-    <UserProfile userId={id} user={user} /> // Pass user data to UserProfile component
+    <UserProfile userId={id} user={user} />
   );
 };
 

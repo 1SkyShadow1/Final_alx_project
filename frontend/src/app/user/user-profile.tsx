@@ -30,7 +30,7 @@ interface User {
     }[];
   }    
 
-const userProfile = ({userId}: {userId:string}) =>{
+const UserProfile = ({userId}: {userId:string}) =>{
   const [user, setUser] = useState<User | null>(null);
 
   const fetchUser = async () =>{
@@ -150,4 +150,4 @@ const userProfile = ({userId}: {userId:string}) =>{
   );
 };
 
-export default userProfile;
+export default UserProfile;
