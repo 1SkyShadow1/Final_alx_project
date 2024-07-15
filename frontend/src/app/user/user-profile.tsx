@@ -74,8 +74,8 @@ const UserProfile = ({userId}: {userId:string}) =>{
     <div className='mt-8 flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-8'>
       <div className='flex-shrink-0'>
         <Avatar className='w-24 h-24 md:w-32 md:h-32 md:h-32 border-4 border-primary'>
-          <AvatarImage src= {user.imageUrl}/>
-          <AvatarFallback>
+          <AvatarImage className='' src= {user.imageUrl}/>
+          <AvatarFallback className=''>
             {user.firstName}
           </AvatarFallback>
         </Avatar>
@@ -120,9 +120,9 @@ const UserProfile = ({userId}: {userId:string}) =>{
         <div className='grid gap-6 mt-4'>
          {user.reviews.map((review) =>(
           <div key ={review._id} className='flex items-start gap-4'>
-           <Avatar>
-            <AvatarImage src={review.author.imageUrl}/>
-            <AvatarFallback>
+           <Avatar className=''>
+            <AvatarImage className='' src={review.author.imageUrl}/>
+            <AvatarFallback className=''>
               {review.author.firstName}
             </AvatarFallback>
            </Avatar>
