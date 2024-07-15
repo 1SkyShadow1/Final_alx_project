@@ -25,7 +25,7 @@ const RegisterAsWorkerForm = ({ onRegisterSuccess }: RegisterAsWorkerFormProps) 
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const handleChange = (event) => {
+  const handleChange = (event: { target: { name: any; value: any; }; }) => {
     const { name, value } = event.target;
     setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
   };
