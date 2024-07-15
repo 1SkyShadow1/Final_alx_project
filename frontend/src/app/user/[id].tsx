@@ -46,7 +46,10 @@ const UserProfilePage = async ({ params }: { params: { id: string } }) => {
   }
 
   return (
-    <UserProfile userId={id} user={user} /> // Pass user data to UserProfile component
+    <div>
+      {/* Pass the 'user' object as a prop to the UserProfile component */}
+      <UserProfile userId={id} user={user} /> 
+    </div>
   );
 };
 
