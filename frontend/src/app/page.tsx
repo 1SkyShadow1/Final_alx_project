@@ -12,14 +12,14 @@ import {
 } from "@/app/ui/card";
 import { Avatar, AvatarImage, AvatarFallback } from "@/app/ui/avatar";
 import { Header } from "@/app/header";
-import {
-  DollarSignIcon,
-  LocateIcon,
-  MoonIcon,
-  MountainIcon,
-  StarIcon,
-  SunIcon,
-} from "@/app/icons";
+import { DollarSignIcon } from "./icons/dollar-sign";
+import { LocateIcon } from "./icons/locate";
+import { MoonIcon } from "./icons/moon";
+import { MountainIcon } from "./icons/mountain";
+import { StarIcon } from "./icons/star";
+import { SunIcon } from "./icons/sun";
+
+
 
 interface Gig {
   title: string;

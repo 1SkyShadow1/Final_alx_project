@@ -5,7 +5,7 @@ import {Avatar, AvatarImage, AvatarFallback} from '@/app/ui/avatar';
 import {Header} from '@/app/header';
 import {PlusIcon} from '@/app/icons/plus';
 import {TrashIcon} from '@/app/icons/trash';
-import {RefreshCwlcon} from '@/app/icons/refresh-cw';
+import {RefreshCwIcon} from '@/app/icons/refresh-cw';
 import { useEffect, useState } from 'react';
 
 interface Message{
@@ -47,8 +47,8 @@ const MessagesPage = ()=>{
                 prefetch={false}
             >
                 <Avatar className='w-12 h-12'>
-                    <AvatarImage src={message.author.imageUrl}/>
-                    <AvatarFallback>{message.author.firstName[0]}{message.author.lastName}</AvatarFallback>
+                    <AvatarImage className='' src={message.author.imageUrl}/>
+                    <AvatarFallback className=''>{message.author.firstName[0]}{message.author.lastName}</AvatarFallback>
                 </Avatar>
                 <div className='flex-1 grid gap-1'>
                     <div className='font-medium'>
@@ -72,7 +72,7 @@ const MessagesPage = ()=>{
                 <span className='sr-only'>Delete</span>
             </Button>
             <Button className='' variant='ghost' size='icon'>
-                <RefreshCwlcon className='w-5 h-5 text primary'/>
+                <RefreshCwIcon className='w-5 h-5 text primary'/>
                 <span className='sr-only'>Refresh</span>
             </Button>
             </div> 

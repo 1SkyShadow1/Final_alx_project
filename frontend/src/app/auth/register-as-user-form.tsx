@@ -20,14 +20,14 @@ const RegisterAsUserForm = ({ onRegisterSuccess }: RegisterAsUserFormProps) => {
   });
 
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<any>(null);
 
-  const handleChange = (event) => {
+  const handleChange = (event: { target: { name: any; value: any; }; }) => {
     const { name, value } = event.target;
     setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
   };
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async (event: { preventDefault: () => void; }) => {
     event.preventDefault();
     setIsLoading(true);
     setError(null);
@@ -38,7 +38,7 @@ const RegisterAsUserForm = ({ onRegisterSuccess }: RegisterAsUserFormProps) => {
       console.log("User registration successful:", response.data);
       onRegisterSuccess(); // Call the callback function
     } catch (error) {
-      setError(error.response.data.message || "Failed to register");
+      setError((error as any).response.data.message || "Failed to register");
     } finally {
       setIsLoading(false);
     }
@@ -49,8 +49,9 @@ const RegisterAsUserForm = ({ onRegisterSuccess }: RegisterAsUserFormProps) => {
       <CardContent className="space-y-4">
         <form onSubmit={handleSubmit}>
           <div className="space-y-2">
-            <Label htmlFor="firstName">First Name</Label>
+            <Label className =''htmlFor="firstName">First Name</Label>
             <Input
+              className= ''
               id="firstName"
               name="firstName"
               placeholder="Enter your first name"
@@ -59,8 +60,9 @@ const RegisterAsUserForm = ({ onRegisterSuccess }: RegisterAsUserFormProps) => {
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="lastName">Last Name</Label>
+            <Label className= '' htmlFor="lastName">Last Name</Label>
             <Input
+              className= ''
               id="lastName"
               name="lastName"
               placeholder="Enter your last name"
@@ -69,8 +71,9 @@ const RegisterAsUserForm = ({ onRegisterSuccess }: RegisterAsUserFormProps) => {
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="email">Email</Label>
+            <Label className='' htmlFor="email">Email</Label>
             <Input
+            className=''
               id="email"
               name="email"
               placeholder="Enter your email"
@@ -80,8 +83,9 @@ const RegisterAsUserForm = ({ onRegisterSuccess }: RegisterAsUserFormProps) => {
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="password">Password</Label>
+            <Label className='' htmlFor="password">Password</Label>
             <Input
+            className=''
               id="password"
               name="password"
               placeholder="Enter your password"
@@ -91,8 +95,9 @@ const RegisterAsUserForm = ({ onRegisterSuccess }: RegisterAsUserFormProps) => {
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="confirmPassword">Confirm Password</Label>
+            <Label className='' htmlFor="confirmPassword">Confirm Password</Label>
             <Input
+             className=''
               id="confirmPassword"
               name="confirmPassword"
               placeholder="Confirm your password"

@@ -15,18 +15,21 @@ import {
  SelectItem
 } from '@/app/ui/select';
 import Badge from '@/app/ui/badge';
-import {
-  DollarSignIcon,
-  HammerIcon,
-  MapPinIcon,
-  MenuIcon,
-  plugIcon    
-} from '@/app/icons/';
-
-import {useState, useEffect, SetStateAction, SetStateAction} from 'react';
+// import {
+//   DollarSignIcon,
+//   HammerIcon,
+//   MapPinIcon,
+//   MenuIcon,
+//   plugIcon    
+// } from '@/app/icons/';
+import {DollarSignIcon} from '@/app/icons/dollar-sign';
+import {HammerIcon} from '@/app/icons/hammer';
+import {MapPinIcon} from '@/app/icons/map-pin';
+import {MenuIcon} from '@/app/icons/menu';
+import {PlugIcon} from '@/app/icons/plug';
+import {useState, useEffect, SetStateAction} from 'react';
 import axios from 'axios';
 import { title } from 'process';
-import { PlugIcon } from './icons/plug';
 import { GigCard } from './gig/gig-card';
 
 interface Gig{

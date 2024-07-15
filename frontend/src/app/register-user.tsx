@@ -9,7 +9,9 @@ const RegisterAsUserPage = () => {
       <Header />
       <main className="flex-1 flex items-center justify-center py-12 md:py-24 lg:py-32">
         <div className="container px-4 md:px-6">
-          <RegisterAsUserForm />
+          <RegisterAsUserForm onRegisterSuccess={function (): void {
+            throw new Error("Function not implemented.");
+          } } />
         </div>
       </main>
     </div>
