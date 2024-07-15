@@ -8,10 +8,10 @@ const authRoutes = require('./auth');
 const skillRoutes = require('./skills');
 const gigRoutes = require('./gigs');
 const userRoutes = require('./users');
-const user_skillsRoutes = require('./user_skills'); // Import user skills routes
+const userSkillsRoutes = require('./user_skills'); // Import user skills routes
 const messageRoutes = require('./messages');
 const searchRoutes = require('./search');
-// const notificationRoutes = require('./notifications'); 
+const notificationRoutes = require('./notifications'); 
 const roleRoutes = require('./roles');
 const reviewRoutes = require('./reviews'); 
 
@@ -52,10 +52,10 @@ app.use('/api/users', authRoutes);
 app.use('/api/skills', skillRoutes);
 app.use('/api/gigs', gigRoutes);
 app.use('/api/users', userRoutes);
-app.use('/api/user_skills', user_skillsRoutes); 
+app.use('/api/user_skills', userSkillsRoutes); 
 app.use('/api/messages', messageRoutes);
 app.use('/api/search', searchRoutes);
-// app.use('/api/notifications', notificationRoutes); 
+app.use('/api/notifications', notificationRoutes); 
 app.use('/api/roles', roleRoutes);
 app.use('/api/reviews', reviewRoutes);
 

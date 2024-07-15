@@ -42,19 +42,23 @@ router.post('/:userId/skills', async(req, res)=>{
 
 // Route to remove a skill from a user's list
 
-res.delete('/:userId/skills/:skillId', async (req, res)=>{
+router.delete('/:userId/skills/:skillId', async (req, res)=>{
   try {
     const {userId, skillId} = req.params;
-    const [result] = await db.execute(
-      'DELETE FROM user_skills WHERE user_id = ? AND skill_id = ?',
-      [userId, skillId]
-    );
+    const deleteSkill = async () => {
+      const [result] = await db.execute(
+        'DELETE FROM user_skills WHERE user_id = ? AND skill_id = ?',
+        [userId, skillId]
+      );
 
-    if(result.affectedRows === 0){
-      return res.status(404).json({message: 'skill not found for user'});
-    }
+      if(result.affectedRows === 0){
+        return res.status(404).json({message: 'skill not found for user'});
+      }
 
-    res.json({message: 'Skill removed from user successfully'});
+      res.json({message: 'Skill removed from user successfully'});
+    };
+
+    await deleteSkill();
   } catch (error){
     console.error('Error removing skill from user',error);
     res.status(500).json({message: 'Error removing skill from user'});
