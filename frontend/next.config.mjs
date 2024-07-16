@@ -1,41 +1,29 @@
-/** @type {import('next').NextConfig} */
-import { resolve } from 'path';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+// If you're using __dirname in parts not shown, define it like this:
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-  transpilePackages: ["final_alx_project/frontend/src/app/icons/"], 
+  transpilePackages: ["final_alx_project/frontend/src/app/icons/"],
   async rewrites() {
     return [
       {
         source: "/api/:path*",
-        destination: "http://localhost:3001/api/:path*", // Replace 'http://localhost:3001' with your actual backend server URL
+        destination: "http://localhost:3001/api/:path*", // Adjust the destination as needed
       },
     ];
   },
-  // ... other configuration ...
   compiler: {
     styledComponents: true,
   },
-  // No longer need experimental.appDir as it's enabled by default
+  // Ensure any experimental features are correctly configured or removed if not needed
   // experimental: {
-  //   appDir: true,
+  //   appDir: true, // Uncomment and adjust if you're using experimental features
   // },
-  reactRoot: "concurrent", // Moved outside experimental 
-  // Include this block for the '@' alias 
-  // This will allow you to import files with a shorter path
-  // using `@` at the beginning of your import statements
-  // Example: import { cn } from '@/lib/utils';
-  webpack: (config, { isServer }) => { // Moved outside experimental 
-    if (!isServer) {
-      config.resolve.alias = {
-        ...config.resolve.alias,
-        "@": resolve(__dirname), // Use 'resolve' from 'path' to get the absolute path
-      };
-    }
-
-    return config;
-  },
 };
 
 export default nextConfig;
