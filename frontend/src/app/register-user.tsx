@@ -1,7 +1,7 @@
 "use client";
 
-import { RegisterAsUserForm } from "@/app/auth/register-as-user-form";
-import { Header } from "@/app/header";
+import { RegisterAsUserForm } from "@/auth/register-as-user-form";
+import { Header } from "@/header";
 
 const RegisterAsUserPage = () => {
   return (

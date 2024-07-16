@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { Card, CardContent } from "@/app/ui/card";
-import { Input, Label } from "@/app/ui/input";
-import { Button } from "@/app/ui/button";
+import { Card, CardContent } from "@/ui/card";
+import { Input, Label } from "@/ui/input";
+import { Button } from "@/ui/button";
 import axios from "axios";
 
 interface LoginFormProps {

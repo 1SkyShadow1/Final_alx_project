@@ -1,11 +1,11 @@
 'use client'
 
 import Link from 'next/link'
-import { Button } from '@/app/ui/button'
-import {Card, CardContent} from '@/app/ui/card';
-import {Label} from '@/app/ui/label';
-import {Input} from '@/app/ui/input';
-import {Textarea} from '@/app/ui/textarea';
+import { Button } from '@/ui/button'
+import {Card, CardContent} from '@/ui/card';
+import {Label} from '@/ui/label';
+import {Input} from '@/ui/input';
+import {Textarea} from '@/ui/textarea';
 
 import {
  Select,
@@ -13,20 +13,13 @@ import {
  SelectValue,
  SelectContent,
  SelectItem
-} from '@/app/ui/select';
-import Badge from '@/app/ui/badge';
-// import {
-//   DollarSignIcon,
-//   HammerIcon,
-//   MapPinIcon,
-//   MenuIcon,
-//   plugIcon    
-// } from '@/app/icons/';
-import {DollarSignIcon} from '@/app/icons/dollar-sign';
-import {HammerIcon} from '@/app/icons/hammer';
-import {MapPinIcon} from '@/app/icons/map-pin';
-import {MenuIcon} from '@/app/icons/menu';
-import {PlugIcon} from '@/app/icons/plug';
+} from '@/ui/select';
+import Badge from '@/ui/badge';
+import {DollarSignIcon} from '@/icons/dollar-sign';
+import {HammerIcon} from '@/icons/hammer';
+import {MapPinIcon} from '@/icons/map-pin';
+import {MenuIcon} from '@/icons/menu';
+import {PlugIcon} from '@/icons/plug';
 import {useState, useEffect, SetStateAction} from 'react';
 import axios from 'axios';
 import { title } from 'process';

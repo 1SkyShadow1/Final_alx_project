@@ -2,16 +2,16 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Button } from "@/app/ui/button";
-import { Input } from "@/app/ui/input";
+import { Button } from "@/ui/button";
+import { Input } from "@/ui/input";
 import {
   Card,
   CardHeader,
   CardContent,
   CardFooter,
-} from "@/app/ui/card";
-import { Avatar, AvatarImage, AvatarFallback } from "@/app/ui/avatar";
-import { Header } from "@/app/header";
+} from "@/ui/card";
+import { Avatar, AvatarImage, AvatarFallback } from "@/ui/avatar";
+import { Header } from "@/header";
 import { DollarSignIcon } from "./icons/dollar-sign";
 import { LocateIcon } from "./icons/locate";
 import { MoonIcon } from "./icons/moon";

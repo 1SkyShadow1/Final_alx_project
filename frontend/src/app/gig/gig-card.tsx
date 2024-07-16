@@ -1,17 +1,17 @@
 "use client";
 
-import { Card, CardContent } from "@/app/ui/card";
-import { Button } from "@/app/ui/button";
-import Badge from "@/app/ui/badge";
-import { DollarSignIcon } from "@/app/icons/dollar-sign";
-import { MapPinIcon } from "@/app/icons/map-pin";
+import { Card, CardContent } from "@/ui/card";
+import { Button } from "@/ui/button";
+import Badge from "@/ui/badge";
+import { DollarSignIcon } from "@/icons/dollar-sign";
+import { MapPinIcon } from "@/icons/map-pin";
 
 interface GigProps {
   gig: {
     title: string;
     description: string;
     location: string;
-    pay: string;
+    pay: number;
     category: string;
   };
 }

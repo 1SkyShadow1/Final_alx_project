@@ -1,13 +1,13 @@
 'use client'
-import {Avatar, AvatarImage, AvatarFallback} from  '@/app/ui/avatar';
-import Badge from '@/app/ui/badge';
-import {Separator} from '@/app/ui/separator';
-import {StarIcon} from '@/app/icons/star';
+import {Avatar, AvatarImage, AvatarFallback} from  '@/ui/avatar';
+import Badge from '@/ui/badge';
+import {Separator} from '@/ui/separator';
+import {StarIcon} from '@/icons/star';
 import axios from 'axios';
 import {useEffect, useState} from 'react';
 import Link from 'next/link';
 import { HammerIcon } from '../icons/hammer';
-import { PlugIcon } from '@/app/icons/plug';
+import { PlugIcon } from '@/icons/plug';
 
 interface User {
   firstName: string;

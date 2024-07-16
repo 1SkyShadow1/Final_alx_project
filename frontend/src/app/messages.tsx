@@ -1,11 +1,11 @@
 'use client'
-import {Button} from '@/app/ui/button';
+import {Button} from '@/ui/button';
 import Link from 'next/link';
-import {Avatar, AvatarImage, AvatarFallback} from '@/app/ui/avatar';
-import {Header} from '@/app/header';
-import {PlusIcon} from '@/app/icons/plus';
-import {TrashIcon} from '@/app/icons/trash';
-import {RefreshCwIcon} from '@/app/icons/refresh-cw';
+import {Avatar, AvatarImage, AvatarFallback} from '@/ui/avatar';
+import {Header} from '@/header';
+import {PlusIcon} from '@/icons/plus';
+import {TrashIcon} from '@/icons/trash';
+import {RefreshCwIcon} from '@/icons/refresh-cw';
 import { useEffect, useState } from 'react';
 
 interface Message{

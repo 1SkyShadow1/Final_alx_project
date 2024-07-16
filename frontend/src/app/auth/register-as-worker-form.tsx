@@ -1,11 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { Card, CardContent } from "@/app/ui/card";
-import { Input, Label } from "@/app/ui/input";
-import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuCheckboxItem } from "@/app/ui/dropdown-menu";
-import { Button } from "@/app/ui/button";
-import { ChevronDownIcon } from "@/app/icons/chevron-down";
+import { Card, CardContent } from "@/ui/card";
+import { Input, Label } from "@/ui/input";
+import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuCheckboxItem } from "@/ui/dropdown-menu";
+import { Button } from "@/ui/button";
+import { ChevronDownIcon } from "@/icons/chevron-down";
 import axios from "axios";
 
 interface RegisterAsWorkerFormProps {

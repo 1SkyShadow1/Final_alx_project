@@ -1,7 +1,7 @@
 'use client';
 
-import {LoginForm} from '@/app/auth/login-form';
-import {Header} from '@/app/header';
+import {LoginForm} from '@/auth/login-form';
+import {Header} from '@/header';
 import { useNavigate } from 'react-router-dom';
 
 const LoginPage = () => {

@@ -1,10 +1,10 @@
  'use client'
- import {Button} from '@/app/ui/button';
+ import {Button} from '@/ui/button';
  import Link from 'next/link';
- import {Header} from '@/app/header';
- import {BellIcon} from '@/app/icons/bell';
- import {TrashIcon} from '@/app/icons/trash';
- import {RefreshCwIcon} from '@/app/icons/refresh-cw';
+ import {Header} from '@/header';
+ import {BellIcon} from '@/icons/bell';
+ import {TrashIcon} from '@/icons/trash';
+ import {RefreshCwIcon} from '@/icons/refresh-cw';
  import { useEffect, useState } from 'react';
 
  interface  Notification{

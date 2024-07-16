@@ -1,15 +1,15 @@
 "use client";
 
 import Link from "next/link";
-import { Button } from "@/app/ui/button";
-import { HammerIcon } from "@/app/icons/hammer";
-import { PlugIcon } from "@/app/icons/plug";
-import { MenuIcon } from "@/app/icons/menu";
-import { XIcon } from "@/app/icons/x";
-import { MailsIcon } from "@/app/icons/mails";
-import { MessagesSquareIcon } from "@/app/icons/messages-square";
+import { Button } from "@/ui/button";
+import { HammerIcon } from "@/icons/hammer";
+import { PlugIcon } from "@/icons/plug";
+import { MenuIcon } from "@/icons/menu";
+import { XIcon } from "@/icons/x";
+import { MailsIcon } from "@/icons/mails";
+import { MessagesSquareIcon } from "@/icons/messages-square";
 import { useState } from "react";
-import { cn } from "@/app/lib/utils";
+import { cn } from "@/lib/utils";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
