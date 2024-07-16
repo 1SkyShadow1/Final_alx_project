@@ -2,7 +2,7 @@
 
 import UserProfile from "@/user/user-profile";
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 
 interface User {
   firstName: string;
@@ -23,11 +23,11 @@ interface User {
   }[];
 }
 
-const UserProfilePage = async ({ params }: { params: { id: string } }) => {
+const UserProfilePage = ({ params }: { params: { id: string } }) => {
   const { id } = params;
   const [user, setUser] = useState<User | null>(null);
 
-  const fetchUser = async () => {
+  const fetchUser = useCallback(async () => {
     try {
       // Assuming the API endpoint is '/api/users/id' 
       const response = await axios.get(`/api/users/${id}`);
@@ -35,11 +35,11 @@ const UserProfilePage = async ({ params }: { params: { id: string } }) => {
     } catch (error) {
       console.error("Error fetching user:", error);
     }
-  };
+  }, [id]);
 
   useEffect(() => {
-    fetchUser();
-  }, [id]);
+    fetchUser(); 
+  }, [fetchUser]);
 
   if (!user) {
     return <div>Loading...</div>;
