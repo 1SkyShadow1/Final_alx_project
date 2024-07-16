@@ -13,7 +13,7 @@ interface RegisterAsWorkerFormProps {
 }
 
 const RegisterAsWorkerForm = ({ onRegisterSuccess }: RegisterAsWorkerFormProps) => {
-  const [formData, setFormData] = useState<{
+  const [FormData, setFormData] = useState<{
     firstName: string;
     lastName: string;
     email: string;
@@ -51,7 +51,7 @@ const RegisterAsWorkerForm = ({ onRegisterSuccess }: RegisterAsWorkerFormProps) 
       }));
     }
     }
-  };
+
 
   const handleSubmit = async (event: { preventDefault: () => void; }) => {
     event.preventDefault();
@@ -75,8 +75,9 @@ const RegisterAsWorkerForm = ({ onRegisterSuccess }: RegisterAsWorkerFormProps) 
       <CardContent className="space-y-4">
         <form onSubmit={handleSubmit}>
           <div className="space-y-2">
-            <Label htmlFor="firstName">First Name</Label>
+            <Label className='' htmlFor="firstName">First Name</Label>
             <Input
+            className={''}
               id="firstName"
               name="firstName"
               placeholder="Enter your first name"
@@ -85,51 +86,52 @@ const RegisterAsWorkerForm = ({ onRegisterSuccess }: RegisterAsWorkerFormProps) 
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="lastName">Last Name</Label>
+            <Label className={''} htmlFor="lastName">Last Name</Label>
             <Input
+            className={''}
               id="lastName"
               name="lastName"
               placeholder="Enter your last name"
-              value={formData.lastName}
+              value={FormData.lastName}
               onChange={handleChange}
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="email">Email</Label>
-            <Input
+            <Label className={''} htmlFor="email">Email</Label>
+            <Input className={''}
               id="email"
               name="email"
               placeholder="Enter your email"
               type="email"
-              value={formData.email}
+              value={FormData.email}
               onChange={handleChange}
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="password">Password</Label>
-            <Input
+            <Label className={''} htmlFor="password">Password</Label>
+            <Input className={''}
               id="password"
               name="password"
               placeholder="Enter your password"
               type="password"
-              value={formData.password}
+              value={FormData.password}
               onChange={handleChange}
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="confirmPassword">Confirm Password</Label>
-            <Input
+            <Label htmlFor="confirmPassword" className="">Confirm Password</Label>
+            <Input className={''}
               id="confirmPassword"
               name="confirmPassword"
               placeholder="Confirm your password"
               type="password"
-              value={formData.confirmPassword}
+              value={FormData.confirmPassword}
               onChange={handleChange}
             />
           </div>
           <div className="space-y-2">
-            <Label>Services Provided</Label>
-            <DropdownMenu>
+            <Label htmlFor="services" className="">Services Provided</Label>
+            <DropdownMenu className={''}>
               <DropdownMenuTrigger asChild>
                 <Button variant="outline" className="w-full justify-between">
                   Select Services <ChevronDownIcon className="h-4 w-4" />
@@ -138,77 +140,77 @@ const RegisterAsWorkerForm = ({ onRegisterSuccess }: RegisterAsWorkerFormProps) 
               <DropdownMenuContent className="w-full">
                 <DropdownMenuCheckboxItem
                   value="plumber"
-                  checked={formData.services.includes("plumber")}
+                  checked={FormData.services.includes("plumber")}
                   onChange={handleServiceChange}
                 >
                   Plumber
                 </DropdownMenuCheckboxItem>
                 <DropdownMenuCheckboxItem
                   value="electrician"
-                  checked={formData.services.includes("electrician")}
+                  checked={FormData.services.includes("electrician")}
                   onChange={handleServiceChange}
                 >
                   Electrician
                 </DropdownMenuCheckboxItem>
                 <DropdownMenuCheckboxItem
                   value="gardener"
-                  checked={formData.services.includes("gardener")}
+                  checked={FormData.services.includes("gardener")}
                   onChange={handleServiceChange}
                 >
                   Gardener
                 </DropdownMenuCheckboxItem>
                 <DropdownMenuCheckboxItem
                   value="domestic_worker"
-                  checked={formData.services.includes("domestic_worker")}
+                  checked={FormData.services.includes("domestic_worker")}
                   onChange={handleServiceChange}
                 >
                   Domestic Worker
                 </DropdownMenuCheckboxItem>
                 <DropdownMenuCheckboxItem
                   value="carpenter"
-                  checked={formData.services.includes("carpenter")}
+                  checked={FormData.services.includes("carpenter")}
                   onChange={handleServiceChange}
                 >
                   Carpenter
                 </DropdownMenuCheckboxItem>
                 <DropdownMenuCheckboxItem
                   value="painter"
-                  checked={formData.services.includes("painter")}
+                  checked={FormData.services.includes("painter")}
                   onChange={handleServiceChange}
                 >
                   Painter
                 </DropdownMenuCheckboxItem>
                 <DropdownMenuCheckboxItem
                   value="handyman"
-                  checked={formData.services.includes("handyman")}
+                  checked={FormData.services.includes("handyman")}
                   onChange={handleServiceChange}
                 >
                   Handyman
                 </DropdownMenuCheckboxItem>
                 <DropdownMenuCheckboxItem
                   value="landscaper"
-                  checked={formData.services.includes("landscaper")}
+                  checked={FormData.services.includes("landscaper")}
                   onChange={handleServiceChange}
                 >
                   Landscaper
                 </DropdownMenuCheckboxItem>
                 <DropdownMenuCheckboxItem
                   value="cleaner"
-                  checked={formData.services.includes("cleaner")}
+                  checked={FormData.services.includes("cleaner")}
                   onChange={handleServiceChange}
                 >
                   Cleaner
                 </DropdownMenuCheckboxItem>
                 <DropdownMenuCheckboxItem
                   value="babysitter"
-                  checked={formData.services.includes("babysitter")}
+                  checked={FormData.services.includes("babysitter")}
                   onChange={handleServiceChange}
                 >
                   Babysitter
                 </DropdownMenuCheckboxItem>
                 <DropdownMenuCheckboxItem
                   value="tutor"
-                  checked={formData.services.includes("tutor")}
+                  checked={FormData.services.includes("tutor")}
                   onChange={handleServiceChange}
                 >
                   Tutor
@@ -222,7 +224,7 @@ const RegisterAsWorkerForm = ({ onRegisterSuccess }: RegisterAsWorkerFormProps) 
                 </DropdownMenuCheckboxItem>
                 <DropdownMenuCheckboxItem
                   value="dog_walker"
-                  checked={formData.services.includes("dog_walker")}
+                  checked={FormData.services.includes("dog_walker")}
                   onChange={handleServiceChange}
                 >
                   Dog Walker
