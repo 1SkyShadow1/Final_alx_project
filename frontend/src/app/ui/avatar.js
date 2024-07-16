@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-
+import Img from "next/image";
 const Avatar = ({ children, className, ...props }) => {
   return (
     <div
@@ -18,7 +18,7 @@ const Avatar = ({ children, className, ...props }) => {
 
 const AvatarImage = ({ src, className, ...props }) => {
   return (
-    <img
+    <Img
       src={src}
       alt="Avatar"
       className={cn(

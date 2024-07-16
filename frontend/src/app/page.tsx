@@ -18,6 +18,7 @@ import { MoonIcon } from "./icons/moon";
 import { MountainIcon } from "./icons/mountain";
 import { StarIcon } from "./icons/star";
 import { SunIcon } from "./icons/sun";
+import Img from "next/image";
 
 
 
@@ -43,7 +44,7 @@ interface RecommendedGig {
   pay: string;
 }
 
-export default function Component() {
+ function Component() {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [rainbowGlow, setRainbowGlow] = useState(false);
 
@@ -118,7 +119,7 @@ export default function Component() {
             </div>
           </div>
           <div className="hidden md:block">
-            <img
+            <Img
               src="/placeholder.svg"
               width={600}
               height={400}
@@ -271,3 +272,5 @@ export default function Component() {
     </div>
   );
 }
+
+export default Component;

@@ -29,7 +29,7 @@ const RegisterAsWorkerForm = ({ onRegisterSuccess }: RegisterAsWorkerFormProps) 
     services: [],
   });
 
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, SetIsLoading] = useState(false);
   const [error, setError] = useState<any>(null);
 
   const handleChange = (event: { target: { name: any; value: any; }; }) => {
@@ -55,7 +55,7 @@ const RegisterAsWorkerForm = ({ onRegisterSuccess }: RegisterAsWorkerFormProps) 
 
   const handleSubmit = async (event: { preventDefault: () => void; }) => {
     event.preventDefault();
-    setIsLoading(true);
+    SetIsLoading(true);
     setError(null);
 
     try {
@@ -66,7 +66,7 @@ const RegisterAsWorkerForm = ({ onRegisterSuccess }: RegisterAsWorkerFormProps) 
     } catch (error) {
       setError((error as any).response.data.message || "Failed to register");
     } finally {
-      setIsLoading(false);
+      SetIsLoading(false);
     }
   };
 
@@ -246,11 +246,11 @@ const RegisterAsWorkerForm = ({ onRegisterSuccess }: RegisterAsWorkerFormProps) 
   );
 };
 
-export { RegisterAsWorkerForm, setIsLoading };
+export { RegisterAsWorkerForm, SetIsLoading };
 
-function setIsLoading(arg0: boolean) {
-  const [isLoading, setIsLoading] = useState<boolean>(arg0);
-  return [isLoading, setIsLoading];
+function SetIsLoading(arg0: boolean) {
+  const [isLoading, SetIsLoading] = useState<boolean>(arg0);
+  return [isLoading, SetIsLoading];
 }
 function setError(arg0: null) {
   throw new Error("Function not implemented.");
