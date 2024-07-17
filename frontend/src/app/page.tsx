@@ -24,7 +24,7 @@ interface Gig {
   title: string;
   description: string;
   location: string;
-  pay: string; // Change type to string since it's a string
+  pay: string;
 }
 
 interface Professional {
@@ -47,10 +47,8 @@ function Component() {
   const [rainbowGlow, setRainbowGlow] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [role, setRole] = useState<string | null>(null);
-  const [recommendedGigs, setRecommendedGigs] =
-    useState<RecommendedGig[]>([]);
-  const [recommendedProfessionals, setRecommendedProfessionals] =
-    useState<Professional[]>([]);
+  const [recommendedGigs, setRecommendedGigs] = useState<RecommendedGig[]>([]);
+  const [recommendedProfessionals, setRecommendedProfessionals] = useState<Professional[]>([]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -60,12 +58,12 @@ function Component() {
   }, []);
 
   useEffect(() => {
-    // Fetching data example (replace with your actual API calls)
     const fetchRecommendedGigs = async () => {
       try {
         const response = await fetch("/api/recommended-gigs");
+        if (!response.ok) throw new Error("Failed to fetch recommended gigs");
         const data: RecommendedGig[] = await response.json();
-        setRecommendedGigs(data); // Update state
+        setRecommendedGigs(data);
       } catch (error) {
         console.error("Error fetching recommended gigs:", error);
       }
@@ -74,8 +72,9 @@ function Component() {
     const fetchRecommendedProfessionals = async () => {
       try {
         const response = await fetch("/api/recommended-professionals");
+        if (!response.ok) throw new Error("Failed to fetch recommended professionals");
         const data: Professional[] = await response.json();
-        setRecommendedProfessionals(data); // Update state
+        setRecommendedProfessionals(data);
       } catch (error) {
         console.error("Error fetching recommended professionals:", error);
       }
@@ -86,17 +85,11 @@ function Component() {
   }, []);
 
   return (
-    <div
-      className={`flex flex-col min-h-screen bg-gradient-to-br from-[#f0f0f0] to-[#d0d0d0] dark:from-[#1a1a1a] dark:to-[#0a0a0a] ${
-        isDarkMode ? "dark" : ""
-      }`}
+    <><div
+      className={`flex flex-col min-h-screen bg-gradient-to-br from-[#f0f0f0] to-[#d0d0d0] dark:from-[#1a1a1a] dark:to-[#0a0a0a] ${isDarkMode ? "dark" : ""}`}
+    ></div><Header /><main
+      className={`flex-1 bg-muted py-8 px-6 md:px-8 ${isDarkMode ? "dark" : ""} relative`}
     >
-      <Header />
-      <main
-        className={`flex-1 bg-muted py-8 px-6 md:px-8 ${
-          isDarkMode ? "dark" : ""
-        } relative`}
-      >
         <div className="absolute inset-0 -z-10 bg-[url('/hero-background.jpg')] bg-cover bg-center opacity-10 dark:opacity-20" />
         <section className="max-w-5xl mx-auto grid md:grid-cols-2 gap-8">
           <div className="space-y-4">
@@ -110,8 +103,7 @@ function Component() {
             <div className="flex gap-4">
               <Input
                 placeholder="Search for your dream job or professional"
-                className="flex-1 shadow-md shadow-primary/20 dark:shadow-primary/40"
-              />
+                className="flex-1 shadow-md shadow-primary/20 dark:shadow-primary/40" />
               <Button className="shadow-md shadow-primary/20 dark:shadow-primary/40 animate-bounce-slow hover:scale-110 hover:rotate-12 transition-transform duration-500 ease-in-out">
                 Search
               </Button>
@@ -123,8 +115,7 @@ function Component() {
               width={600}
               height={400}
               alt="GIGSTR Hero Image"
-              className="rounded-lg object-cover shadow-lg shadow-primary/20 dark:shadow-primary/40"
-            />
+              className="rounded-lg object-cover shadow-lg shadow-primary/20 dark:shadow-primary/40" />
           </div>
         </section>
         <section className="max-w-5xl mx-auto mt-12 overflow-hidden">
@@ -179,7 +170,7 @@ function Component() {
           <h2 className="text-2xl font-bold mb-6 animate-bounce-slow">
             Recommended Jobs
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 animate-marquee whitespace-nowrap">
             {recommendedGigs.map((gig) => (
               <Card
                 key={gig.title}
@@ -215,65 +206,56 @@ function Component() {
             ))}
           </div>
         </section>
-      </main>
-      <footer
-        className={`bg-muted text-muted-foreground py-8 px-6 md:px-8 ${
-          isDarkMode ? "dark" : ""
-        } shadow-lg shadow-primary/20 dark:shadow-primary/40`}
+        {isLoggedIn && (
+          <section className="max-w-5xl mx-auto mt-12">
+            <h2 className="text-2xl font-bold mb-6 animate-bounce-slow">
+              {role === "worker"
+                ? "Your Active Gigs"
+                : "Find Your Next Gig"}
+            </h2>
+            {role === "worker" ? (
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 animate-marquee whitespace-nowrap">
+                {/* Display a list of active gigs for the worker */}
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 animate-marquee whitespace-nowrap">
+                {/* Display a list of gigs for the user to browse */}
+              </div>
+            )}
+          </section>
+        )}
+      </main><footer
+        className={`bg-muted text-muted-foreground py-8 px-6 md:px-8 ${isDarkMode ? "dark" : ""} shadow-lg shadow-primary/20 dark:shadow-primary/40`}
       >
         <div className="max-w-5xl mx-auto grid md:grid-cols-5 gap-8">
           <div className="space-y-2">
             <h4 className="font-bold">Company</h4>
-            <Link
-              href="/about"
-              className="hover:underline hover:scale-110 transition-transform"
-              prefetch={false}
-            >
+            <Link href="/about" className="hover:underline hover:scale-110 transition-transform" prefetch={false}>
               About
             </Link>
-            <Link
-              href="/careers"
-              className="hover:underline hover:scale-110 transition-transform"
-              prefetch={false}
-            >
+            <Link href="/careers" className="hover:underline hover:scale-110 transition-transform" prefetch={false}>
               Careers
             </Link>
-            <Link
-              href="/press"
-              className="hover:underline hover:scale-110 transition-transform"
-              prefetch={false}
-            >
+            <Link href="/press" className="hover:underline hover:scale-110 transition-transform" prefetch={false}>
               Press
             </Link>
           </div>
           <div className="space-y-2">
             <h4 className="font-bold">Products</h4>
-            <Link
-              href="/find-jobs"
-              className="hover:underline hover:scale-110 transition-transform"
-              prefetch={false}
-            >
+            <Link href="/find-jobs" className="hover:underline hover:scale-110 transition-transform" prefetch={false}>
               Find Jobs
             </Link>
-            <Link
-              href="/post-a-job"
-              className="hover:underline hover:scale-110 transition-transform"
-              prefetch={false}
-            >
+            <Link href="/post-a-job" className="hover:underline hover:scale-110 transition-transform" prefetch={false}>
               Post a Job
             </Link>
-            <Link
-              href="/professionals"
-              className="hover:underline hover:scale-110 transition-transform"
-              prefetch={false}
-            >
+            <Link href="/professionals" className="hover:underline hover:scale-110 transition-transform" prefetch={false}>
               Professionals
             </Link>
           </div>
-          <div className="space" />
+          {/* Assuming there's more content here, ensure all divs are closed */}
         </div>
-      </footer>
-    </div>
+      </footer>;
+    </>
   );
 }
 

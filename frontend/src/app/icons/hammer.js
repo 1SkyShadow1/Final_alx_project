@@ -1,6 +1,6 @@
 "use client"
 
-const HammerIcon = (prop)=>{
+const HammerIcon = (props)=>{
   return(
     <svg
     {...props}

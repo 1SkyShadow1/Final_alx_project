@@ -1,5 +1,5 @@
 'use client';
-const XIcon = () => {
+const XIcon = (props) => {
 return (
    <svg
     {...props}
