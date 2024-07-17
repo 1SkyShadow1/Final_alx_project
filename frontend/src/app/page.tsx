@@ -85,9 +85,12 @@ function Component() {
   }, []);
 
   return (
-    <><div
+    <div>
+      <Header />
+      <div
       className={`flex flex-col min-h-screen bg-gradient-to-br from-[#f0f0f0] to-[#d0d0d0] dark:from-[#1a1a1a] dark:to-[#0a0a0a] ${isDarkMode ? "dark" : ""}`}
-    ></div><Header /><main
+    >
+    <main
       className={`flex-1 bg-muted py-8 px-6 md:px-8 ${isDarkMode ? "dark" : ""} relative`}
     >
         <div className="absolute inset-0 -z-10 bg-[url('/hero-background.jpg')] bg-cover bg-center opacity-10 dark:opacity-20" />
@@ -255,7 +258,8 @@ function Component() {
           {/* Assuming there's more content here, ensure all divs are closed */}
         </div>
       </footer>;
-    </>
+    </div>
+    </div>
   );
 }
 
