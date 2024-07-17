@@ -12,22 +12,19 @@ import {
 } from "@/ui/card";
 import { Avatar, AvatarImage, AvatarFallback } from "@/ui/avatar";
 import { Header } from "@/header";
-import { DollarSignIcon } from "./icons/dollar-sign";
-import { LocateIcon } from "./icons/locate";
-import { MoonIcon } from "./icons/moon";
-import { MountainIcon } from "./icons/mountain";
-import { StarIcon } from "./icons/star";
-import { SunIcon } from "./icons/sun";
+import { DollarSignIcon } from "@/icons/dollar-sign";
+import { LocateIcon } from "@/icons/locate";
+import { MoonIcon } from "@/icons/moon";
+import { MountainIcon } from "@/icons/mountain";
+import { StarIcon } from "@/icons/star";
+import { SunIcon } from "@/icons/sun";
 import Img from "next/image";
-
-
 
 interface Gig {
   title: string;
   description: string;
   location: string;
-  pay: number;
-  category: string;
+  pay: string; // Change type to string since it's a string
 }
 
 interface Professional {
@@ -35,6 +32,7 @@ interface Professional {
   profession: string;
   rating: number;
   reviews: number;
+  imageUrl: string;
 }
 
 interface RecommendedGig {
@@ -44,12 +42,13 @@ interface RecommendedGig {
   pay: string;
 }
 
- function Component() {
+function Component() {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [rainbowGlow, setRainbowGlow] = useState(false);
-
-  // Example: Fetching recommended gigs and professionals (would be done in a real application)
-  const [recommendedGigs, setRecommendedGigs] = useState<RecommendedGig[]>([]);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [role, setRole] = useState<string | null>(null);
+  const [recommendedGigs, setRecommendedGigs] =
+    useState<RecommendedGig[]>([]);
   const [recommendedProfessionals, setRecommendedProfessionals] =
     useState<Professional[]>([]);
 
@@ -66,7 +65,7 @@ interface RecommendedGig {
       try {
         const response = await fetch("/api/recommended-gigs");
         const data: RecommendedGig[] = await response.json();
-        setRecommendedGigs(data);
+        setRecommendedGigs(data); // Update state
       } catch (error) {
         console.error("Error fetching recommended gigs:", error);
       }
@@ -76,7 +75,7 @@ interface RecommendedGig {
       try {
         const response = await fetch("/api/recommended-professionals");
         const data: Professional[] = await response.json();
-        setRecommendedProfessionals(data);
+        setRecommendedProfessionals(data); // Update state
       } catch (error) {
         console.error("Error fetching recommended professionals:", error);
       }
@@ -140,7 +139,7 @@ interface RecommendedGig {
               >
                 <CardHeader className="my-class-name">
                   <Avatar className="w-12 h-12">
-                    <AvatarImage src="/placeholder-user.jpg" className="w-12 h-12" />
+                    <AvatarImage src={professional.imageUrl} className="w-12 h-12" />
                     <AvatarFallback className={undefined}>{professional.name}</AvatarFallback>
                   </Avatar>
                 </CardHeader>
@@ -160,12 +159,17 @@ interface RecommendedGig {
                   </div>
                 </CardContent>
                 <CardFooter className="my-class-name">
-                  <Button
-                    variant="outline"
+                  <Link
+                    href={`/user/${professional.name}`}
                     className="shadow-md shadow-primary/20 dark:shadow-primary/40 animate-bounce-slow hover:scale-110 hover:rotate-12 transition-transform duration-500 ease-in-out"
                   >
-                    View Profile
-                  </Button>
+                    <Button
+                      variant="outline"
+                      className="shadow-md shadow-primary/20 dark:shadow-primary/40 animate-bounce-slow hover:scale-110 hover:rotate-12 transition-transform duration-500 ease-in-out"
+                    >
+                      View Profile
+                    </Button>
+                  </Link>
                 </CardFooter>
               </Card>
             ))}
