@@ -29,7 +29,7 @@
         }, []);
 
         return(
-          <div className='flex flex-col h-full w-full bg-white p-6'>
+          <div className='flex flex-col h-full w-full bg-dark p-6'>
             <Header/>
             <h2 className='text-center text-2xl font-bold my-4'>Notifiactions</h2>
               <div className='flex-1 overflow-y-auto bg-["/pattern.svg"] bg-cover bg-no-repeat bg-center'>
@@ -53,7 +53,7 @@
                                 {notification.timestamp}
                             </div>
                          </Link>   
-                        ))};
+                        ))}
                 </div>
             </div>
             <div className='bg-background border-t px-6 py-4 flex items-center justify-between rounded-b-lg shadow-lg'>
@@ -68,7 +68,7 @@
                     </Button>
                 </div>
                 <div className='text-sm text-muted-foreground'>
-                    4 unread notifications
+                    {notifications.length} Notifications
                 </div>
             </div>
         </div>    

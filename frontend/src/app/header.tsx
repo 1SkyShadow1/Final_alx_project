@@ -34,31 +34,26 @@ const Header = () => {
       >
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-2 hover:text-primary-foreground">
-            <Button variant="ghost" size="icon" className="hover:text-primary-foreground">
-              <MailsIcon className="w-6 h-6" />
-              <span className="sr-only">Notifications</span>
-            </Button>
-            <span className="text-sm text-muted-foreground">
+          <Link href="/gigs" className="hover:underline" prefetch={false}>
+          Gigs
+          </Link>
+          <Link href='/notifications' className="hover:underline" prefetch={false}>
               Notifications
-            </span>
+          </Link>
           </div>
           <div className="flex items-center gap-2 hover:text-primary-foreground">
-            <Button variant="ghost" size="icon" className="hover:text-primary-foreground">
-              <MessagesSquareIcon className="w-6 h-6" />
-              <span className="sr-only">Messages</span>
-            </Button>
-            <span className="text-sm text-muted-foreground">Messages</span>
+            <Link href='/messages' className="hover:underline" prefetch={false}>
+              Messages
+            </Link>
           </div>
         </div>
         <Link href="/about" className="hover:underline" prefetch={false}>
           About
         </Link>
-        <Link href="/professionals" className="hover:underline" prefetch={false}>
-          Professionals
+        <Link href="/user-profile" className="hover:underline" prefetch={false}>
+          Profile
         </Link>
-        <Link href="/gigs" className="hover:underline" prefetch={false}>
-          Gigs
-        </Link>
+       
       </nav>
       <Button
         variant="outline"
