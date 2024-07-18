@@ -17,11 +17,10 @@ const Header = () => {
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   return (
-    <header className="bg-black px-4 lg:px-6 h-14 flex items-center">
-      <Link
-        href="/"
-        className="flex items-center justify-center"
-        prefetch={false}
+    <header className='bg-primary text-primary-foreground py-4 px-6 flex items-center justify-between'>
+    <Link href='/'
+      className = 'text-xl font-bold flex items-center gap-2 animate-none'
+      prefetch={false}
       >
         <PlugIcon className="size-6 text-white" />
         <HammerIcon className="size-6 ml-2 text-white" />
