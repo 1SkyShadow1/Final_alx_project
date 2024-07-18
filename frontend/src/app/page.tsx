@@ -284,6 +284,7 @@ function Component() {
             >
               About
             </Link>
+            <br />
             <Link
               href="/careers"
               className="hover:underline hover:scale-110 transition-transform"
@@ -291,6 +292,7 @@ function Component() {
             >
               Careers
             </Link>
+            <br />
             <Link
               href="/press"
               className="hover:underline hover:scale-110 transition-transform"
@@ -308,6 +310,7 @@ function Component() {
             >
               Find Jobs
             </Link>
+            <br />
             <Link
               href="/post-a-job"
               className="hover:underline hover:scale-110 transition-transform"
@@ -315,6 +318,7 @@ function Component() {
             >
               Post a Job
             </Link>
+            <br />
             <Link
               href="/professionals"
               className="hover:underline hover:scale-110 transition-transform"
