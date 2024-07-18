@@ -32,11 +32,9 @@ export default function Component() {
   return (
     <div className="flex flex-col min-h-dvh">
       <header className="bg-black px-4 lg:px-6 h-14 flex items-center">
-        <Link href="/" className="flex items-center justify-center" prefetch={false}>
           <PlugIcon className="size-6 text-white" />
           <HammerIcon className="size-6 ml-2 text-white" />
           <span className="font-bold text-lg text-white">Gigstr</span>
-        </Link>
         <nav className="ml-auto flex gap-4 sm:gap-6">
           <Link href="/how-it-works" className="text-sm font-medium hover:underline underline-offset-4 text-white" prefetch={false}>
             How It Works
