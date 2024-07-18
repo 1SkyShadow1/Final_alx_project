@@ -372,3 +372,5 @@ const GigsPage = ()=>{
     </div>  
   );
 }
+
+export default GigsPage
