@@ -2,7 +2,8 @@
 
 import {LoginForm} from '@/auth/login-form';
 import {Header} from '@/header';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate} from 'react-router-dom';
+
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -23,3 +24,4 @@ const LoginPage = () => {
   );
 };
 
+export default LoginPage;
