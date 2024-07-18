@@ -1,5 +1,6 @@
-import Link from "next/link";
+"use client";
 
+import Link from "next/link";
 import { HammerIcon } from "../icons/hammer";
 import { PlugIcon } from "../icons/plug"
 import WorkerRegistrationForm from "../auth/WorkerRegistrationForm";
@@ -104,8 +105,10 @@ export default function Component() {
         <section className="w-full py-12 md:py-24 lg:py-32">
           <div className="container grid items-center justify-center gap-4 px-4 md:px-6">
             <div className="space-y-3">
-              {/* "Register as a Gigstr Worker" title (unchanged) */}
-              {/* "Join the Gigstr platform..." paragraph (unchanged) */}
+              <h2 className="text-2xl font-bold">Register as a Gigstr Worker</h2>
+              <p className="text-lg text-muted-foreground">
+                Join the Gigstr platform and start offering your services to people in need.
+              </p>
             </div>
             {currentForm === 'worker' && <WorkerRegistrationForm onRegisterSuccess={() => handleFormChange('login')}/>}
             {currentForm === 'user' && <UserRegistrationForm onRegisterSuccess={() => handleFormChange('login')}/>}
@@ -116,8 +119,10 @@ export default function Component() {
         <section className="w-full py-12 md:py-24 lg:py-32 bg-muted">
           <div className="container grid items-center justify-center gap-4 px-4 text-center md:px-6 lg:gap-10">
             <div className="space-y-3">
-              {/* "What Our Users Say" title (unchanged) */}
-              {/* "Hear from the people..." paragraph (unchanged) */}
+              <h2 className="text-2xl font-bold">What Our Users Say</h2>
+              <p className="text-lg text-muted-foreground">
+                Hear from the people who have used Gigstr and their experiences with our platform.
+              </p>
             </div>
             {/* Testimonials content (unchanged) */}
           </div>
