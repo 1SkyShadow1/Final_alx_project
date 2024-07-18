@@ -23,7 +23,7 @@ import {PlugIcon} from '@/icons/plug';
 import {useState, useEffect, SetStateAction} from 'react';
 import axios from 'axios';
 import { title } from 'process';
-import { GigCard } from './gig/gig-card';
+import { GigCard } from '../gig/gig-card';
 
 interface Gig{
   title: string;
@@ -372,3 +372,5 @@ const GigsPage = ()=>{
     </div>  
   );
 }
+
+export default GigsPage
