@@ -1,16 +1,14 @@
-"use client";
-
+import { Card, CardContent } from "../ui/card";
+import { Label } from "../ui/label";
+import { Input } from "../ui/input";
 import { useState } from "react";
-import { Card, CardContent } from "@/ui/card";
-import { Input, Label } from "@/ui/input";
-import { Button } from "@/ui/button";
 import axios from "axios";
 
-interface RegisterAsUserFormProps {
+interface UserRegistrationFormProps {
   onRegisterSuccess: () => void;
 }
 
-const RegisterAsUserForm = ({ onRegisterSuccess }: RegisterAsUserFormProps) => {
+const UserRegistrationForm = ({ onRegisterSuccess }: UserRegistrationFormProps) => {
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -20,25 +18,32 @@ const RegisterAsUserForm = ({ onRegisterSuccess }: RegisterAsUserFormProps) => {
   });
 
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<any>(null);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleChange = (event: { target: { name: any; value: any; }; }) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
   };
 
-  const handleSubmit = async (event: { preventDefault: () => void; }) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setIsLoading(true);
     setError(null);
 
     try {
-      const response = await axios.post("/api/auth/register-user", formData);
+      const response = await axios.post("/api/users", {
+        ...formData,
+        role: "user", // Add role to the request
+      });
       // Handle successful registration
       console.log("User registration successful:", response.data);
       onRegisterSuccess(); // Call the callback function
     } catch (error) {
-      setError((error as any).response.data.message || "Failed to register");
+      if (axios.isAxiosError(error) && error.response) {
+        setError(error.response.data.message || "Failed to register");
+      } else {
+        setError("Failed to register");
+      }
     } finally {
       setIsLoading(false);
     }
@@ -49,75 +54,65 @@ const RegisterAsUserForm = ({ onRegisterSuccess }: RegisterAsUserFormProps) => {
       <CardContent className="space-y-4">
         <form onSubmit={handleSubmit}>
           <div className="space-y-2">
-            <Label className =''htmlFor="firstName">First Name</Label>
+            <Label htmlFor="firstName">First Name</Label>
             <Input
-              className= ''
               id="firstName"
               name="firstName"
               placeholder="Enter your first name"
               value={formData.firstName}
-              onChange={handleChange}
-            />
+              onChange={handleChange} className={undefined}            />
           </div>
           <div className="space-y-2">
-            <Label className= '' htmlFor="lastName">Last Name</Label>
+            <Label htmlFor="lastName">Last Name</Label>
             <Input
-              className= ''
               id="lastName"
               name="lastName"
               placeholder="Enter your last name"
               value={formData.lastName}
-              onChange={handleChange}
-            />
+              onChange={handleChange} className={undefined}            />
           </div>
           <div className="space-y-2">
-            <Label className='' htmlFor="email">Email</Label>
+            <Label htmlFor="email">Email</Label>
             <Input
-            className=''
               id="email"
               name="email"
               placeholder="Enter your email"
               type="email"
               value={formData.email}
-              onChange={handleChange}
-            />
+              onChange={handleChange} className={undefined}            />
           </div>
           <div className="space-y-2">
-            <Label className='' htmlFor="password">Password</Label>
+            <Label htmlFor="password">Password</Label>
             <Input
-            className=''
               id="password"
               name="password"
               placeholder="Enter your password"
               type="password"
               value={formData.password}
-              onChange={handleChange}
-            />
+              onChange={handleChange} className={undefined}            />
           </div>
           <div className="space-y-2">
-            <Label className='' htmlFor="confirmPassword">Confirm Password</Label>
+            <Label htmlFor="confirmPassword">Confirm Password</Label>
             <Input
-             className=''
               id="confirmPassword"
               name="confirmPassword"
               placeholder="Confirm your password"
               type="password"
               value={formData.confirmPassword}
-              onChange={handleChange}
-            />
+              onChange={handleChange} className={undefined}            />
           </div>
           {error && (
             <div className="text-red-500 text-sm font-medium">
               {error}
             </div>
           )}
-          <Button type="submit" disabled={isLoading} className="w-full">
+          <button type="submit" disabled={isLoading} className="w-full">
             {isLoading ? "Registering..." : "Register"}
-          </Button>
+          </button>
         </form>
       </CardContent>
     </Card>
   );
 };
 
-export { RegisterAsUserForm };
+export default UserRegistrationForm;
