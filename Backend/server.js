@@ -3,6 +3,8 @@ const dotenv = require('dotenv');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const helmet = require('helmet');
+const jwt = require('jsonwebtoken'); 
+const bcryptjs = require('bcryptjs');
 const db = require('./db'); 
 const authRoutes = require('./auth'); 
 const skillRoutes = require('./skills');
@@ -25,27 +27,6 @@ const port = process.env.PORT || 3001;
 app.use(cors());
 app.use(bodyParser.json()); 
 app.use(helmet());
-
-// Authentication Middleware 
-const verifyToken = (req, res, next) => {
-  const token = req.headers.authorization;
-
-  if (!token) {
-    return res.status(401).json({ message: 'Unauthorized' });
-  }
-
-  try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET); 
-    req.userId = decoded.userId; 
-    next();
-  } catch (error) {
-    console.error('Invalid token:', error);
-    return res.status(401).json({ message: 'Unauthorized' });
-  }
-};
-
-// Apply verifyToken middleware globally (before any routes that need authentication)
-app.use(verifyToken); 
 
 // Mount routes 
 app.use('/api/users', authRoutes); 
