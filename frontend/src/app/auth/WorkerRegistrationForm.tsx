@@ -1,9 +1,11 @@
-import { Card, CardContent } from "../ui/card";
-import { Label } from "../ui/label";
-import { Input } from "../ui/input";
-import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuCheckboxItem } from "../ui/dropdown-menu";
-import { Button } from "../ui/button";
-import { ChevronDownIcon } from "../icons/chevron-down"; // 
+"use client";
+
+import { Card, CardContent } from "@/ui/card";
+import { Label } from "@/ui/label";
+import { Input } from "@/ui/input";
+import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuCheckboxItem } from "@/ui/dropdown-menu";
+import { Button } from "@/ui/button";
+import { ChevronDownIcon } from "@/icons/chevron-down"; // 
 import { useState } from "react";
 import axios from "axios";
 
@@ -57,7 +59,7 @@ const WorkerRegistrationForm = ({ onRegisterSuccess }: WorkerRegistrationFormPro
     setError(null);
 
     try {
-      const response = await axios.post("/api/users", {
+      const response = await axios.post("/api/auth", {
         ...formData,
         role: "worker", // Add role to the request
       });
@@ -133,19 +135,19 @@ const WorkerRegistrationForm = ({ onRegisterSuccess }: WorkerRegistrationFormPro
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent className="w-full">
-                <DropdownMenuCheckboxItem value="plumber" checked={undefined} onChange={undefined}>Plumber</DropdownMenuCheckboxItem>
-                <DropdownMenuCheckboxItem value="electrician" checked={undefined} onChange={undefined}>Electrician</DropdownMenuCheckboxItem>
-                <DropdownMenuCheckboxItem value="gardener" checked={undefined} onChange={undefined}>Gardener</DropdownMenuCheckboxItem>
-                <DropdownMenuCheckboxItem value="domestic_worker" checked={undefined} onChange={undefined}>Domestic Worker</DropdownMenuCheckboxItem>
-                <DropdownMenuCheckboxItem value="carpenter" checked={undefined} onChange={undefined}>Carpenter</DropdownMenuCheckboxItem>
-                <DropdownMenuCheckboxItem value="painter" checked={undefined} onChange={undefined}>Painter</DropdownMenuCheckboxItem>
-                <DropdownMenuCheckboxItem value="handyman" checked={undefined} onChange={undefined}>Handyman</DropdownMenuCheckboxItem>
-                <DropdownMenuCheckboxItem value="landscaper" checked={undefined} onChange={undefined}>Landscaper</DropdownMenuCheckboxItem>
-                <DropdownMenuCheckboxItem value="cleaner" checked={undefined} onChange={undefined}>Cleaner</DropdownMenuCheckboxItem>
-                <DropdownMenuCheckboxItem value="babysitter" checked={undefined} onChange={undefined}>Babysitter</DropdownMenuCheckboxItem>
-                <DropdownMenuCheckboxItem value="tutor" checked={undefined} onChange={undefined}>Tutor</DropdownMenuCheckboxItem>
-                <DropdownMenuCheckboxItem value="personal_trainer" checked={undefined} onChange={undefined}>Personal Trainer</DropdownMenuCheckboxItem>
-                <DropdownMenuCheckboxItem value="dog_walker" checked={undefined} onChange={undefined}>Dog Walker</DropdownMenuCheckboxItem>
+                <DropdownMenuCheckboxItem value="plumber" checked={formData.services.includes("plumber")} onChange={handleServiceChange}>Plumber</DropdownMenuCheckboxItem>
+                <DropdownMenuCheckboxItem value="electrician" checked={formData.services.includes("electrician")} onChange={handleServiceChange}>Electrician</DropdownMenuCheckboxItem>
+                <DropdownMenuCheckboxItem value="gardener" checked={formData.services.includes("gardener")} onChange={handleServiceChange}>Gardener</DropdownMenuCheckboxItem>
+                <DropdownMenuCheckboxItem value="domestic_worker" checked={formData.services.includes("domestic_worker")} onChange={handleServiceChange}>Domestic Worker</DropdownMenuCheckboxItem>
+                <DropdownMenuCheckboxItem value="carpenter" checked={formData.services.includes("carpenter")} onChange={handleServiceChange}>Carpenter</DropdownMenuCheckboxItem>
+                <DropdownMenuCheckboxItem value="painter" checked={formData.services.includes("painter")} onChange={handleServiceChange}>Painter</DropdownMenuCheckboxItem>
+                <DropdownMenuCheckboxItem value="handyman" checked={formData.services.includes("handyman")} onChange={handleServiceChange}>Handyman</DropdownMenuCheckboxItem>
+                <DropdownMenuCheckboxItem value="landscaper" checked={formData.services.includes("landscaper")} onChange={handleServiceChange}>Landscaper</DropdownMenuCheckboxItem>
+                <DropdownMenuCheckboxItem value="cleaner" checked={formData.services.includes("cleaner")} onChange={handleServiceChange}>Cleaner</DropdownMenuCheckboxItem>
+                <DropdownMenuCheckboxItem value="babysitter" checked={formData.services.includes("babysitter")} onChange={handleServiceChange}>Babysitter</DropdownMenuCheckboxItem>
+                <DropdownMenuCheckboxItem value="tutor" checked={formData.services.includes("tutor")} onChange={handleServiceChange}>Tutor</DropdownMenuCheckboxItem>
+                <DropdownMenuCheckboxItem value="personal_trainer" checked={formData.services.includes("personal_trainer")} onChange={handleServiceChange}>Personal Trainer</DropdownMenuCheckboxItem>
+                <DropdownMenuCheckboxItem value="dog_walker" checked={formData.services.includes("dog_walker")} onChange={handleServiceChange}>Dog Walker</DropdownMenuCheckboxItem>
               </DropdownMenuContent>
             </DropdownMenu>
           </div>

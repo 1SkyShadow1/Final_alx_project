@@ -6,7 +6,7 @@ const helmet = require('helmet');
 const jwt = require('jsonwebtoken'); 
 const bcryptjs = require('bcryptjs');
 const db = require('./db'); 
-const authRoutes = require('./auth'); 
+const authRoutes = require('./auth');
 const skillRoutes = require('./skills');
 const gigRoutes = require('./gigs');
 const userRoutes = require('./users');
@@ -16,6 +16,7 @@ const searchRoutes = require('./search');
 const notificationRoutes = require('./notifications'); 
 const roleRoutes = require('./roles');
 const reviewRoutes = require('./reviews'); 
+
 
 // Load environment variables
 dotenv.config();
@@ -39,6 +40,7 @@ app.use('/api/search', searchRoutes);
 app.use('/api/notifications', notificationRoutes); 
 app.use('/api/roles', roleRoutes);
 app.use('/api/reviews', reviewRoutes);
+app.use('/api/auth', authRoutes);
 
 // Error handling middleware
 app.use((err, req, res, next) => {

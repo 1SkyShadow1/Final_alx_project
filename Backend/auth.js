@@ -1,18 +1,21 @@
 const express = require('express');
 const router = express.Router();
 const bcryptjs = require('bcryptjs');
-const db = require('./db');
+const db = require('./db'); 
+const jwt = require('jsonwebtoken')
 
 // Register a new user
 router.post('/register-user', async (req, res) => {
   try {
-    const { firstName, lastName, email, password } = req.body; 
+    const { firstName, lastName, email, password, role } = req.body; 
 
     // Check if the email already exists
-    const [existingUser] = await db.execute(
+    const [existingUser] = await db.query(
       'SELECT * FROM users WHERE email = ?',
       [email]
     );
+
+    console.log("Email from request body: ", email); // Log incoming email
 
     if (existingUser.length > 0) {
       return res.status(400).json({ message: 'Email already exists' });
@@ -22,14 +25,17 @@ router.post('/register-user', async (req, res) => {
     const hashedPassword = await bcryptjs.hash(password, 10);
 
     // Insert the new user into the database
-    const [result] = await db.execute(
+    await db.execute(
       'INSERT INTO users (firstName, lastName, email, password_hash, role) VALUES (?, ?, ?, ?, ?)',
-      [firstName, lastName, email, hashedPassword, 'user'] 
+      [firstName, lastName, email, hashedPassword, 'user'] // Add role to the insert query
     );
+
+    // console.log("SQL Insert Query: ", 'INSERT INTO users (firstName, lastName, email, password_hash, role) VALUES (?, ?, ?, ?, ?)',
+    //   [firstName, lastName, email, hashedPassword, role]); // Log SQL query
 
     res.status(201).json({ message: 'User registered successfully' });
   } catch (error) {
-    console.error('Error registering user:', error);
+    console.error('Error registering user:', error); 
     res.status(500).json({ message: 'Error registering user' });
   }
 });
@@ -40,12 +46,13 @@ router.post('/register-worker', async (req, res) => {
     const { firstName, lastName, email, password, services } = req.body; 
 
     // Check if the email already exists
-    const [existingUser] = await db.execute(
+    const [rows] = await db.execute(
       'SELECT * FROM users WHERE email = ?',
       [email]
     );
 
-    if (existingUser.length > 0) {
+    // Check if the email exists
+    if (rows.length > 0) {
       return res.status(400).json({ message: 'Email already exists' });
     }
 

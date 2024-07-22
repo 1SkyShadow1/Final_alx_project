@@ -1,8 +1,9 @@
-import { Card, CardContent } from "../ui/card";
-import { Label } from "../ui/label";
-import { Input } from "../ui/input";
+import { Card, CardContent } from "@/ui/card";
+import { Label } from "@/ui/label";
+import { Input } from "@/ui/input";
 import { useState } from "react";
 import axios from "axios";
+import { Button } from "@/ui/button";
 
 interface UserRegistrationFormProps {
   onRegisterSuccess: () => void;
@@ -31,7 +32,8 @@ const UserRegistrationForm = ({ onRegisterSuccess }: UserRegistrationFormProps) 
     setError(null);
 
     try {
-      const response = await axios.post("/api/users", {
+      console.log("Form Data: ", formData); // Added console.log for debugging
+      const response = await axios.post("/api/auth/register-user", { // Correct endpoint
         ...formData,
         role: "user", // Add role to the request
       });
@@ -39,6 +41,7 @@ const UserRegistrationForm = ({ onRegisterSuccess }: UserRegistrationFormProps) 
       console.log("User registration successful:", response.data);
       onRegisterSuccess(); // Call the callback function
     } catch (error) {
+      console.log("Error during registration: ", error); // Added console.log for debugging
       if (axios.isAxiosError(error) && error.response) {
         setError(error.response.data.message || "Failed to register");
       } else {
@@ -106,9 +109,9 @@ const UserRegistrationForm = ({ onRegisterSuccess }: UserRegistrationFormProps) 
               {error}
             </div>
           )}
-          <button type="submit" disabled={isLoading} className="w-full">
+          <Button type="submit" disabled={isLoading} className="w-full">
             {isLoading ? "Registering..." : "Register"}
-          </button>
+          </Button>
         </form>
       </CardContent>
     </Card>
