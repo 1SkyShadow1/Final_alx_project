@@ -59,7 +59,7 @@ const WorkerRegistrationForm = ({ onRegisterSuccess }: WorkerRegistrationFormPro
     setError(null);
 
     try {
-      const response = await axios.post("/api/auth", {
+      const response = await axios.post("/api/auth/register-worker", {
         ...formData,
         role: "worker", // Add role to the request
       });
@@ -131,7 +131,7 @@ const WorkerRegistrationForm = ({ onRegisterSuccess }: WorkerRegistrationFormPro
               <DropdownMenuTrigger asChild>
                 <Button variant="outline" className="w-full justify-between">
                   Select Services
-                  <ChevronDownIcon className="h-4 w-4" />
+                  <ChevronDownIcon className="iconClass" />
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent className="w-full">
