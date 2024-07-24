@@ -141,7 +141,7 @@ function Component() {
           </div>
           <div className="hidden md:block">
             <Img
-              src="/placeholder.svg"
+              src="/public/images/hero.jpg"
               width={600}
               height={400}
               alt="GIGSTR Hero Image"
