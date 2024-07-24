@@ -64,20 +64,6 @@ router.post('/register-worker', async (req, res) => {
       'INSERT INTO users (firstName, lastName, email, password_hash, role) VALUES (?, ?, ?, ?, ?)',
       [firstName, lastName, email, hashedPassword, 'worker'] 
     );
-
-    // Insert the worker's skills
-    for (const service of services) {
-      // Get skill ID
-      const [skillResult] = await db.execute('SELECT id FROM skills WHERE name = ?', [service]);
-      const skillId = skillResult[0].id;
-
-      // Insert user-skill association
-      await db.execute(
-        'INSERT INTO user_skills (user_id, skill_id) VALUES (?, ?)',
-        [result.insertId, skillId]
-      );
-    }
-
     res.status(201).json({ message: 'Worker registered successfully' });
   } catch (error) {
     console.error('Error registering worker:', error);
