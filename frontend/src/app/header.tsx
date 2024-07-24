@@ -18,7 +18,7 @@ const Header = () => {
 
   return (
     <header className='bg-primary text-primary-foreground py-4 px-6 flex items-center justify-between'>
-    <Link href='/'
+    <Link href='/home'
       className = 'text-xl font-bold flex items-center gap-2 animate-none'
       prefetch={false}
       >
@@ -50,7 +50,7 @@ const Header = () => {
         <Link href="/about" className="hover:underline" prefetch={false}>
           About
         </Link>
-        <Link href="/user-profile" className="hover:underline" prefetch={false}>
+        <Link href="/user" className="hover:underline" prefetch={false}>
           Profile
         </Link>
        

@@ -1,6 +1,6 @@
 "use client";
 
-import UserProfile from "@/user-profile/page";
+import UserProfile from "@/user-profile/userProfilePage";
 import axios from "axios";
 import { useState, useEffect, useCallback } from "react";
 

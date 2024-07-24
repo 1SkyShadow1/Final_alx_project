@@ -1,9 +1,12 @@
+"use client";
+
 import { Card, CardContent } from "../ui/card";
 import { Label } from "../ui/label";
 import { Input } from "../ui/input";
 import { useState } from "react";
 import axios from "axios";
-import { Button } from "@/ui/button";
+import { Button } from "../ui/button";
+import { useRouter } from "next/navigation"; 
 
 interface LoginFormProps {
   onLoginSuccess: () => void;
@@ -17,6 +20,7 @@ const LoginForm = ({ onLoginSuccess }: LoginFormProps) => {
 
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const router = useRouter(); // Import useRouter
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -30,9 +34,13 @@ const LoginForm = ({ onLoginSuccess }: LoginFormProps) => {
 
     try {
       const response = await axios.post("/api/auth/login", formData);
-      // Handle successful login 
+      // Handle successful login
       console.log("Login successful:", response.data);
-      onLoginSuccess(); 
+      onLoginSuccess();
+      // Store the token in localStorage
+      localStorage.setItem('token', response.data.token); 
+      // Redirect to the homepage
+      router.push("/home");
     } catch (error) {
       setError((error as any).response?.data?.message || "Failed to log in");
     } finally {
