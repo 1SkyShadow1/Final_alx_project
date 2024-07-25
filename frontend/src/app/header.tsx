@@ -46,6 +46,11 @@ const Header = () => {
               Messages
             </Link>
           </div>
+          <div className="flex items-center gap-2 hover:text-primary-foreground">
+            <Link href='/contact' className="hover:underline" prefetch={false}>
+              Contact
+            </Link>
+          </div>
         </div>
         <Link href="/about" className="hover:underline" prefetch={false}>
           About

@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const db = require('./db');
 
-router.get('/', async(req, res)=>{
+router.get('/gigs', async(req, res)=>{
   try{
     // Aquire skills from query parameters
     const {skills} = req.query;
@@ -25,7 +25,7 @@ router.get('/', async(req, res)=>{
   }   
 });
 
-router.post('/', async(req, res)=>{
+router.post('/gigs', async(req, res)=>{
   try{
     const {title, description, skills_required, userId} = req.body;
     const[result] = await db.execute(

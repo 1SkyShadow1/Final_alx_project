@@ -13,6 +13,30 @@ interface FormState {
   currentForm: 'worker' | 'user' | 'login';
 }
 
+interface Testimonial {
+  id: number;
+  name: string;
+  comment: string;
+}
+
+const testimonials: Testimonial[] = [
+  {
+    id: 1,
+    name: "John Doe",
+    comment: "Gigstr helped me find a reliable plumber in my area. Highly recommended!"
+  },
+  {
+    id: 2,
+    name: "Jane Smith",
+    comment: "I registered as a worker on Gigstr and started getting job offers right away. Great platform!"
+  },
+  {
+    id: 3,
+    name: "Mike Johnson",
+    comment: "The login process on Gigstr is seamless. I can access my account with just a few clicks."
+  }
+];
+
 export default function Component() {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [rainbowGlow, setRainbowGlow] = useState(false);
@@ -28,6 +52,15 @@ export default function Component() {
   const handleFormChange = (form: FormState['currentForm']) => {
     setCurrentForm(form);
   };
+
+  let formTitle = '';
+  if (currentForm === 'worker') {
+    formTitle = 'Register as a Gigstr Worker';
+  } else if (currentForm === 'user') {
+    formTitle = 'Register as a Gigstr User';
+  } else if (currentForm === 'login') {
+    formTitle = 'Sign in to Gigstr';
+  }
 
   return (
     <div className="flex flex-col min-h-dvh">
@@ -90,23 +123,36 @@ export default function Component() {
                 </div>
               </div>
               <img
-                src="/placeholder.svg"
-                width="1270"
-                height="300"
+                src="/images/home.jpg"
+                width="700"
+                height="600"
                 alt="Hero"
-                className="mx-auto aspect-[3/1] overflow-hidden rounded-t-xl object-cover"
+                className="mx-auto aspect-[2/1] overflow-hidden rounded-t-xl object-cover"
               />
             </div>
+            
           </div>
         </section>
         {/* Rest of the content (unchanged) */}
         <section className="w-full py-12 md:py-24 lg:py-32">
           <div className="container grid items-center justify-center gap-4 px-4 md:px-6">
             <div className="space-y-3">
-              <h2 className="text-2xl font-bold">Register as a Gigstr Worker</h2>
-              <p className="text-lg text-muted-foreground">
-                Join the Gigstr platform and start offering your services to people in need.
-              </p>
+              <h2 className="text-2xl font-bold">{formTitle}</h2>
+              {currentForm === 'worker' && (
+                <p className="text-lg text-muted-foreground">
+                  Join the Gigstr platform and start offering your services to people in need.
+                </p>
+              )}
+              {currentForm === 'user' && (
+                <p className="text-lg text-muted-foreground">
+                  Join the Gigstr platform and start using our services to find workers in your area.
+                </p>
+              )}
+              {currentForm === 'login' && (
+                <p className="text-lg text-muted-foreground">
+                  Sign in to Gigstr and access your account.
+                </p>
+              )}
             </div>
             {currentForm === 'worker' && <WorkerRegistrationForm onRegisterSuccess={() => handleFormChange('login')}/>}
             {currentForm === 'user' && <UserRegistrationForm onRegisterSuccess={() => handleFormChange('login')}/>}
@@ -122,7 +168,14 @@ export default function Component() {
                 Hear from the people who have used Gigstr and their experiences with our platform.
               </p>
             </div>
-            {/* Testimonials content (unchanged) */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {testimonials.map((testimonial) => (
+                <div key={testimonial.id} className="bg-dark p-6 rounded-lg shadow-md">
+                  <p className="text-lg font-medium">{testimonial.comment}</p>
+                  <p className="mt-2 text-sm text-gray-500">{testimonial.name}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
       </main>

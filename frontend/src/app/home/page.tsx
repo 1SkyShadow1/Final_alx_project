@@ -18,7 +18,7 @@ import { MoonIcon } from "@/icons/moon";
 import { MountainIcon } from "@/icons/mountain";
 import { StarIcon } from "@/icons/star";
 import { SunIcon } from "@/icons/sun";
-import Img from "next/image";
+import Image from "next/image";
 
 interface Gig {
   title: string;
@@ -119,7 +119,7 @@ function Component() {
           isDarkMode ? "dark" : ""
         } relative`}
       >
-        <div className="absolute inset-0 -z-10 bg-[url('/hero-background.jpg')] bg-cover bg-center opacity-10 dark:opacity-20" />
+        <div className="absolute inset-0 -z-10 bg-[url('/hero.jpg')] bg-cover bg-center opacity-10 dark:opacity-20" />
         <section className="max-w-5xl mx-auto grid md:grid-cols-2 gap-8">
           <div className="space-y-4">
             <h1 className="text-4xl font-bold animate-bounce-slow">
@@ -140,8 +140,8 @@ function Component() {
             </div>
           </div>
           <div className="hidden md:block">
-            <Img
-              src="/public/images/hero.jpg"
+            <Image
+              src="/images/hero.jpg"
               width={600}
               height={400}
               alt="GIGSTR Hero Image"
