@@ -25,10 +25,10 @@ router.get('/gigs', async(req, res)=>{
   }   
 });
 
-router.post('/gigs', async(req, res)=>{
+router.post('/gigs-list', async(req, res)=>{
   try{
     const {title, description, skills_required, userId} = req.body;
-    const[result] = await db.execute(
+       await db.execute(
       'INSERT INTO gigs (title, description, skills_required, user_id)VALUES(?,?,?,?)',
       [title, description, skills_required, userId]     
     );

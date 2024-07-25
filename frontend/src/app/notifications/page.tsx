@@ -31,11 +31,11 @@
         return(
           <div className='flex flex-col h-full w-full bg-dark p-6'>
             <Header/>
-            <h2 className='text-center text-2xl font-bold my-4'>Notifiactions</h2>
+            <h2 className='text-center text-2xl font-bold my-4'>Notifications</h2>
               <div className='flex-1 overflow-y-auto bg-["/pattern.svg"] bg-cover bg-no-repeat bg-center'>
                 <div className='grid gap-4 p-6'>
                     {
-                        notifications.map((notification)=>(
+                        notifications && notifications.map((notification)=>(
                          <Link
                            key={notification.title + notification.timestamp}
                            href={`/notifications/${notification.title}`}
@@ -68,7 +68,7 @@
                     </Button>
                 </div>
                 <div className='text-sm text-muted-foreground'>
-                    {notifications.length} Notifications
+                    {notifications && notifications.length} Notifications
                 </div>
             </div>
         </div>    
