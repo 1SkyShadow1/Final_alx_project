@@ -55,10 +55,11 @@ const Header = () => {
         <Link href="/about" className="hover:underline" prefetch={false}>
           About
         </Link>
-        <Link href="/user" className="hover:underline" prefetch={false}>
-          Profile
+        <div className="flex items-center gap-2 hover:text-primary-foreground">
+        <Link href="/user-profile/[id]" as="/user-profile/1" className="hover:underline" prefetch={false}>
+        Profile
         </Link>
-       
+        </div>
       </nav>
       <Button
         variant="outline"
