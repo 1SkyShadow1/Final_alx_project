@@ -1,10 +1,7 @@
 import { Avatar, AvatarImage, AvatarFallback } from '@/ui/avatar';
 import Badge from '@/ui/badge';
 import { Separator } from '@/ui/separator';
-import { StarIcon } from '@/icons/star';
 import Link from 'next/link';
-import { HammerIcon } from '../icons/hammer'; 
-import { PlugIcon } from '@/icons/plug'; 
 
 interface User { 
     _id: string; // Or your ID structure
