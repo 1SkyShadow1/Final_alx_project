@@ -119,7 +119,14 @@ function Component() {
           isDarkMode ? "dark" : ""
         } relative`}
       >
-        <div className="absolute inset-0 -z-10 bg-[url('/hero.jpg')] bg-cover bg-center opacity-10 dark:opacity-20" />
+        <div className="absolute inset-0 -z-10 bg-cover bg-center opacity-10 dark:opacity-20">
+          <Image
+            src="/hero.jpg"
+            layout="fill"
+            objectFit="cover"
+            alt="Background Image"
+          />
+        </div>
         <section className="max-w-5xl mx-auto grid md:grid-cols-2 gap-8">
           <div className="space-y-4">
             <h1 className="text-4xl font-bold animate-bounce-slow">
@@ -139,13 +146,13 @@ function Component() {
               </Button>
             </div>
           </div>
-            <img
-              src="/images/hero.jpg"
-              width="600"
-              height="400"
-              alt="GIGSTR Hero Image"
-              className="mx-auto aspect-[2/1] overflow-hidden rounded-t-xl object-cover"
-            />
+          <Image
+            src="/images/hero.jpg"
+            width={600}
+            height={400}
+            alt="GIGSTR Hero Image"
+            className="mx-auto aspect-[2/1] overflow-hidden rounded-t-xl object-cover"
+          />
         </section>
         <section className="max-w-5xl mx-auto mt-12 overflow-hidden">
           <h2 className="text-2xl font-bold mb-6 animate-bounce-slow">
