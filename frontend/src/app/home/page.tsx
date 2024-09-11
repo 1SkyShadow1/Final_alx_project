@@ -140,7 +140,7 @@ function Component() {
             </div>
           </div>
           <div className="hidden md:block">
-            <Image
+            <img
               src="/images/hero.jpg"
               width={600}
               height={400}
