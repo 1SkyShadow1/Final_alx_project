@@ -1,7 +1,6 @@
 import { Avatar, AvatarImage, AvatarFallback } from '@/ui/avatar';
 import Badge from '@/ui/badge';
 import { Separator } from '@/ui/separator';
-import Link from 'next/link';
 
 interface User { 
     _id: string; // Or your ID structure
@@ -24,7 +23,7 @@ interface User {
     userType: "worker" | "employer"; 
 }
 
-interface UserProfileProps {
+export interface UserProfileProps {
     user: User;
 }
 
@@ -79,4 +78,4 @@ const UserProfile: React.FC<UserProfileProps> = ({ user }) => {
     );
 };
 
-export default UserProfile;
+export default UserProfile as React.FC<UserProfileProps>;
