@@ -139,15 +139,13 @@ function Component() {
               </Button>
             </div>
           </div>
-          <div className="hidden md:block">
             <img
               src="/images/hero.jpg"
-              width={600}
-              height={400}
+              width="600"
+              height="400"
               alt="GIGSTR Hero Image"
-              className="rounded-lg object-cover shadow-lg shadow-primary/20 dark:shadow-primary/40"
+              className="mx-auto aspect-[2/1] overflow-hidden rounded-t-xl object-cover"
             />
-          </div>
         </section>
         <section className="max-w-5xl mx-auto mt-12 overflow-hidden">
           <h2 className="text-2xl font-bold mb-6 animate-bounce-slow">
