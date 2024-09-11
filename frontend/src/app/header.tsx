@@ -59,7 +59,12 @@ const Header = () => {
         <Link href="/user-profile/[id]" as="/user-profile/1" className="hover:underline" prefetch={false}>
         Profile
         </Link>
+
         </div>
+=======
+       <Link href='/' className="hover:underline" prefetch={false}>
+       Logout
+       </Link>
       </nav>
       <Button
         variant="outline"

@@ -36,3 +36,8 @@ input {
   color: black;
   background-color: white;
 }
+
+.dropdown-menu {
+  background-color: black;
+  color:white
+}

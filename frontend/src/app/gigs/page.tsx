@@ -6,6 +6,7 @@ import {Card, CardContent} from '../ui/card';
 import {Label} from '../ui/label';
 import {Input} from '../ui/input';
 import {Textarea} from '../ui/textarea';
+import { Header } from "@/header";
 
 import {
   Select,
@@ -91,7 +92,7 @@ const GigsPage = ()=>{
       formData.append('pay', newGig.pay);
       formData.append('documents', newGig.documents || '');
       formData.append('category', newGig.category);
-      const response = await axios.post('/api/gigs', formData, {
+      const response = await axios.post('/api/gigs-list', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
@@ -151,33 +152,7 @@ const GigsPage = ()=>{
 
   return(
     <div className='flex flex-col min-h-dvh'>
-      <header className='bg-primary text-primary-foreground py-4 px-6 flex items-center justify-between'>
-        <Link href='/'
-          className = 'text-xl font-bold flex items-center gap-2 animate-none'
-          prefetch={false}
-        >
-          <HammerIcon className='w-5 h-5'/>
-          <PlugIcon className='w-5 h-5'/>
-          Gigstr
-        </Link>
-        <nav className = 'hidden md:flex items-center gap-6'>
-          <Link href ='/post-a-gig' className='hover:underline' prefetch={false}>
-            Post a gig
-          </Link>
-          <Link href='/' className='hover:underline' prefetch={false}>
-            Browse Gigs
-          </Link>
-          <Link href='/dashboard' className='hover:underline' prefetch={false}>
-            Dashboard
-          </Link>
-          <Link href='/profile' className='hover:underline' prefetch={false}>
-            Profile
-          </Link>
-        </nav>
-        <Button variant='outline' className='md:hidden'>
-          <MenuIcon className='w-5 h-5'/> 
-        </Button> 
-      </header>
+      <Header/>
       <main className='flex-1 grir grid-cols-1 md:grid-cols-2 gap-8 p-6 md:p-10'>
         <section>
           <h2 className='text-2xl font-bold mb-4'>

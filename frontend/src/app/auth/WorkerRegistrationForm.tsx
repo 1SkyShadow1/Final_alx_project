@@ -127,7 +127,7 @@ const WorkerRegistrationForm = ({ onRegisterSuccess }: WorkerRegistrationFormPro
           </div>
           <div className="space-y-2">
             <Label htmlFor={undefined}>Services Provided</Label>
-            <DropdownMenu className={undefined}>
+            <DropdownMenu className='dropdown-menu'>
               <DropdownMenuTrigger asChild>
                 <Button variant="outline" className="w-full justify-between">
                   Select Services

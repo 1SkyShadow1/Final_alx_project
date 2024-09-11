@@ -14,7 +14,7 @@ const DropdownMenu = ({ children, className, ...props }) => {
       {isOpen && (
         <DropdownMenuContent
           className={cn(
-            "absolute z-10 mt-2 w-full rounded-md bg-background border border-border shadow-md",
+            "absolute z-10 mt-2 w-full rounded-md border border-border shadow-md",
             className
           )}
         >
@@ -44,6 +44,7 @@ const DropdownMenuContent = ({ children, className, ...props }) => {
         "overflow-hidden rounded-md shadow-md",
         className
       )}
+      // style={{ opacity: 10 }} 
       {...props}
     >
       {children}

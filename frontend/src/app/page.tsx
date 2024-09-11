@@ -75,12 +75,6 @@ export default function Component() {
           <Link href="/pricing" className="text-sm font-medium hover:underline underline-offset-4 text-white" prefetch={false}>
             Pricing
           </Link>
-          <Link href="/about" className="text-sm font-medium hover:underline underline-offset-4 text-white" prefetch={false}>
-            About
-          </Link>
-          <Link href="/contact" className="text-sm font-medium hover:underline underline-offset-4 text-white" prefetch={false}>
-            Contact
-          </Link>
         </nav>
       </header>
       <main className="flex-1">
