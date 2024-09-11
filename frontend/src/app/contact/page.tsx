@@ -1,9 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Link from "next/link";
 import { Header } from "../header";
-import { Button } from "../ui/button";
 
 const ContactPage = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -28,7 +26,7 @@ const ContactPage = () => {
             Contact Us
           </h1>
           <p className="text-muted-foreground text-lg animate-pulse-slow">
-            Have a question, suggestion, or feedback?  We'd love to hear from
+            Have a question, suggestion, or feedback?  We&apos;d love to hear from
             you. 
           </p>
 
